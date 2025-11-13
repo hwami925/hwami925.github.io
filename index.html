@@ -134,36 +134,29 @@
         }
 
         .about-content {
-            display: flex;
-            gap: 40px;
-            align-items: center;
+            max-width: 800px;
+        }
+
+        .about-intro {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .about-text {
-            flex: 1;
+            font-size: 17px;
+            line-height: 1.9;
+            color: var(--color-text);
+            margin-bottom: 20px;
         }
 
         .about-text p {
-            font-size: 18px;
-            line-height: 1.8;
             margin-bottom: 20px;
-            color: var(--color-text);
-        }
-
-        .about-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .about-image img {
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .about-image img:hover {
-            transform: translateY(-5px);
         }
 
         /* ==================== Skills 섹션 ==================== */
@@ -171,41 +164,28 @@
             background: white;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
             margin-top: 20px;
         }
 
-        .skill-card {
-            background: var(--color-primary);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        .skill-card h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
+        .skill-tag {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
             color: var(--color-text);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: default;
         }
 
-        .skill-card p {
-            font-size: 14px;
-            color: var(--color-text-light);
+        .skill-tag:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         /* ==================== Projects 섹션 ==================== */
@@ -215,7 +195,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
             margin-top: 20px;
         }
@@ -226,6 +206,8 @@
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -233,9 +215,16 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .project-image {
+        .project-image-wrapper {
             width: 100%;
             height: 250px;
+            overflow: hidden;
+            background: var(--color-light);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
@@ -246,6 +235,9 @@
 
         .project-info {
             padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-info h3 {
@@ -258,6 +250,30 @@
             font-size: 15px;
             color: var(--color-text-light);
             line-height: 1.6;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .project-tech {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-text);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--color-text);
         }
 
         /* ==================== Contact 섹션 ==================== */
@@ -273,33 +289,48 @@
 
         .contact-content p {
             font-size: 18px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             color: var(--color-text);
         }
 
-        .contact-links {
-            display: flex;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
 
-        .contact-btn {
-            display: inline-block;
-            padding: 15px 40px;
+        .contact-item {
             background: white;
-            color: var(--color-text);
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 500;
+            padding: 25px 20px;
+            border-radius: 15px;
             transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--color-text);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .contact-btn:hover {
-            transform: translateY(-3px);
+        .contact-item:hover {
+            transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .contact-label {
+            font-size: 14px;
+            color: var(--color-text-light);
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--color-text);
+            word-break: break-all;
         }
 
         /* ==================== Footer ==================== */
@@ -374,10 +405,6 @@
                 font-size: 36px;
             }
 
-            .about-content {
-                flex-direction: column;
-            }
-
             section {
                 padding: 50px 30px;
             }
@@ -386,9 +413,16 @@
                 font-size: 28px;
             }
 
-            .projects-grid,
-            .skills-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                justify-content: center;
             }
         }
 
@@ -409,6 +443,11 @@
             section {
                 padding: 40px 20px;
             }
+
+            .skill-tag {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
         }
     </style>
 </head>
@@ -418,17 +457,17 @@
         <!-- 왼쪽 고정 패널 -->
         <div class="left-panel">
             <div class="profile-section">
-                <!-- 프로필 이미지 (placeholder) -->
-                <img src="https://via.placeholder.com/200/FFE5EC/4A5568?text=hwami" alt="화미 프로필" class="profile-image">
+                <!-- 프로필 이미지 -->
+                <img src="images/profile.jpg" alt="화미 프로필" class="profile-image">
                 
                 <!-- 이름 -->
-                <h1>화미<br><span style="font-size: 0.7em; font-weight: 400;">hwami</span></h1>
+                <h1>화미<br><span style="font-size: 0.7em; font-weight: 400;">김태민</span></h1>
                 
                 <!-- 직업 -->
                 <p class="subtitle">일러스트 작가</p>
                 
                 <!-- 한 줄 소개 -->
-                <p class="tagline">방송인(푸후)를 서포트하고 있는 귀여운 캐릭터를 주로 그리는 일러스트 작가입니다.</p>
+                <p class="tagline">방송인 푸후를 서포트하며 다양한 귀여운 캐릭터 일러스트를 작업하고 있는 일러스트 작가입니다.</p>
             </div>
         </div>
 
@@ -438,13 +477,15 @@
             <section id="about" class="fade-in">
                 <h2>About Me</h2>
                 <div class="about-content">
-                    <div class="about-text">
-                        <p>안녕하세요! 저는 <strong>화미(hwami)</strong>입니다.</p>
-                        <p>방송인 푸후님을 서포트하며 다양한 귀여운 캐릭터 일러스트를 제작하고 있습니다. 파스텔톤의 부드러운 색감과 사랑스러운 표정으로 많은 분들께 즐거움을 드리고 싶습니다.</p>
-                        <p>디지털 드로잉을 통해 감성적이고 따뜻한 작품을 만들어가고 있으며, 각종 굿즈 디자인과 캐릭터 제작에도 열정을 쏟고 있습니다.</p>
+                    <div class="about-intro">
+                        안녕하세요, 일러스트 작가 화미(김태민)입니다.
                     </div>
-                    <div class="about-image">
-                        <img src="https://via.placeholder.com/400x500/C7CEEA/4A5568?text=About+Me" alt="화미 소개 이미지">
+                    <div class="about-text">
+                        <p>현재 방송인 푸후를 도와 전체적인 일러스트 작업(썸네일, 굿즈, 애니메이션 쇼츠 등)을 전담하고 있으며, SNS에도 여러 일러스트를 올리는 등 활발한 활동을 이어나가고 있습니다.</p>
+                        
+                        <p>방송인 푸후를 도와 작업하고 있는 만큼 평소 방송을 즐겨보는 편이며, 애니메이션과 스토리 위주의 게임을 주로 즐기는 편입니다.</p>
+                        
+                        <p>툴은 클립스튜디오(Clipstudio)를 주로 사용하는 편이며, 그 외에도 프리미엄프로와 일러스트레이션 또한 사용하는 편입니다. 이 외에 이 후 학습을 목표로 하고 있는 것으로 3D그래픽 쪽의 학습이 있으며, 최근 새로 생긴 목표로는 버츄얼 개발과 게임 쪽 개발 등이 있습니다.</p>
                     </div>
                 </div>
             </section>
@@ -452,34 +493,10 @@
             <!-- ==================== Skills 섹션 ==================== -->
             <section id="skills" class="fade-in">
                 <h2>Skills</h2>
-                <div class="skills-grid">
-                    <!-- 스킬 카드 1 -->
-                    <div class="skill-card">
-                        <div class="skill-icon">🎨</div>
-                        <h3>디지털 드로잉</h3>
-                        <p>Procreate, Clip Studio Paint를 활용한 캐릭터 일러스트 제작</p>
-                    </div>
-
-                    <!-- 스킬 카드 2 -->
-                    <div class="skill-card">
-                        <div class="skill-icon">✨</div>
-                        <h3>캐릭터 디자인</h3>
-                        <p>귀여운 캐릭터 컨셉 기획부터 완성까지 전 과정</p>
-                    </div>
-
-                    <!-- 스킬 카드 3 -->
-                    <div class="skill-card">
-                        <div class="skill-icon">🎁</div>
-                        <h3>굿즈 디자인</h3>
-                        <p>스티커, 아크릴 키링 등 다양한 굿즈 디자인</p>
-                    </div>
-
-                    <!-- 스킬 카드 4 -->
-                    <div class="skill-card">
-                        <div class="skill-icon">💝</div>
-                        <h3>이모티콘 제작</h3>
-                        <p>감정 표현이 풍부한 캐릭터 이모티콘 제작</p>
-                    </div>
+                <div class="skills-container">
+                    <div class="skill-tag">🎨 CLIPSTUDIO</div>
+                    <div class="skill-tag">✨ 캐릭터 디자인</div>
+                    <div class="skill-tag">🎬 쇼츠 작업</div>
                 </div>
             </section>
 
@@ -489,37 +506,38 @@
                 <div class="projects-grid">
                     <!-- 프로젝트 1 -->
                     <div class="project-card">
-                        <img src="https://via.placeholder.com/400x250/FFE5EC/4A5568?text=Project+1" alt="프로젝트 1" class="project-image">
+                        <div class="project-image-wrapper">
+                            <img src="images/project01.png" alt="쀼쀼송 뮤비" class="project-image">
+                        </div>
                         <div class="project-info">
-                            <h3>푸후 캐릭터 시리즈</h3>
-                            <p>방송인 푸후님의 대표 캐릭터 디자인 및 다양한 포즈와 표정 제작. 팬들에게 큰 사랑을 받은 시리즈입니다.</p>
+                            <h3>쀼쀼송 뮤비</h3>
+                            <p>방송 스트리머 푸후의 오리지널 곡 "쀼쀼송"의 뮤비 일러스트와 애니메이션을 작업하였습니다.</p>
+                            <div class="project-tech">CLIPSTUDIO</div>
+                            <a href="https://youtu.be/xqdPnqbu3fw?si=vm6kWNv5cvBgNv9H" target="_blank" class="project-link">🔗 프로젝트 보기 →</a>
                         </div>
                     </div>
 
                     <!-- 프로젝트 2 -->
                     <div class="project-card">
-                        <img src="https://via.placeholder.com/400x250/C7CEEA/4A5568?text=Project+2" alt="프로젝트 2" class="project-image">
+                        <div class="project-image-wrapper">
+                            <img src="images/project02.jpg" alt="프로젝트 2" class="project-image">
+                        </div>
                         <div class="project-info">
-                            <h3>귀여운 동물 친구들</h3>
-                            <p>파스텔 컬러의 사랑스러운 동물 캐릭터 시리즈. 각 캐릭터마다 독특한 개성을 담았습니다.</p>
+                            <h3>프로젝트 2</h3>
+                            <p>프로젝트 설명이 들어갈 자리입니다. 작업 내용과 특징을 간단히 소개해주세요.</p>
+                            <div class="project-tech">기술 스택</div>
                         </div>
                     </div>
 
                     <!-- 프로젝트 3 -->
                     <div class="project-card">
-                        <img src="https://via.placeholder.com/400x250/B8E0D2/4A5568?text=Project+3" alt="프로젝트 3" class="project-image">
-                        <div class="project-info">
-                            <h3>시즌 굿즈 컬렉션</h3>
-                            <p>봄, 여름, 가을, 겨울 각 시즌을 테마로 한 캐릭터 굿즈 디자인 프로젝트입니다.</p>
+                        <div class="project-image-wrapper">
+                            <img src="images/project03.png" alt="프로젝트 3" class="project-image">
                         </div>
-                    </div>
-
-                    <!-- 프로젝트 4 -->
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x250/FFF3E0/4A5568?text=Project+4" alt="프로젝트 4" class="project-image">
                         <div class="project-info">
-                            <h3>감성 이모티콘 팩</h3>
-                            <p>일상에서 사용하기 좋은 감정 표현 이모티콘 40종 제작. 카카오톡 이모티콘샵 출시 예정.</p>
+                            <h3>프로젝트 3</h3>
+                            <p>프로젝트 설명이 들어갈 자리입니다. 작업 내용과 특징을 간단히 소개해주세요.</p>
+                            <div class="project-tech">기술 스택</div>
                         </div>
                     </div>
                 </div>
@@ -530,10 +548,28 @@
                 <h2>Contact</h2>
                 <div class="contact-content">
                     <p>프로젝트 의뢰나 협업 제안은 언제나 환영합니다!<br>아래 연락처로 편하게 연락 주세요.</p>
-                    <div class="contact-links">
-                        <a href="mailto:hwami@example.com" class="contact-btn">📧 이메일</a>
-                        <a href="https://instagram.com/hwami" target="_blank" class="contact-btn">📷 인스타그램</a>
-                        <a href="https://twitter.com/hwami" target="_blank" class="contact-btn">🐦 트위터</a>
+                    
+                    <div class="contact-grid">
+                        <!-- 이메일 -->
+                        <a href="mailto:mim666777@naver.com" class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">mim666777@naver.com</div>
+                        </a>
+
+                        <!-- Discord -->
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-label">Discord</div>
+                            <div class="contact-value">@hwami925</div>
+                        </div>
+
+                        <!-- X (Twitter) -->
+                        <a href="https://x.com/HwAmI_925" target="_blank" class="contact-item">
+                            <div class="contact-icon">🐦</div>
+                            <div class="contact-label">X (Twitter)</div>
+                            <div class="contact-value">@HwAmI_925</div>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -566,27 +602,26 @@
             observer.observe(el);
         });
 
-        // 스킬 카드 마이크로 인터랙션 - 마우스 움직임에 따라 미세하게 기울임
-        const skillCards = document.querySelectorAll('.skill-card');
+        // 스킬 태그 마이크로 인터랙션
+        const skillTags = document.querySelectorAll('.skill-tag');
         
-        skillCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; // 카드 내 마우스 x 위치
-                const y = e.clientY - rect.top;  // 카드 내 마우스 y 위치
+        skillTags.forEach(tag => {
+            tag.addEventListener('mousemove', (e) => {
+                const rect = tag.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
                 
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                // 중심에서 벗어난 정도를 계산 (-1 ~ 1)
-                const rotateX = (y - centerY) / centerY * -5; // 최대 5도 회전
-                const rotateY = (x - centerX) / centerX * 5;
+                const rotateX = (y - centerY) / centerY * -3;
+                const rotateY = (x - centerX) / centerX * 3;
                 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+                tag.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.05)`;
             });
             
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            tag.addEventListener('mouseleave', () => {
+                tag.style.transform = 'perspective(500px) rotateX(0) rotateY(0) translateY(0) scale(1)';
             });
         });
 
@@ -602,14 +637,37 @@
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                const rotateX = (y - centerY) / centerY * -3;
-                const rotateY = (x - centerX) / centerX * 3;
+                const rotateX = (y - centerY) / centerY * -2;
+                const rotateY = (x - centerX) / centerX * 2;
                 
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
             });
             
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // Contact 카드 마이크로 인터랙션
+        const contactItems = document.querySelectorAll('.contact-item');
+        
+        contactItems.forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / centerY * -3;
+                const rotateY = (x - centerX) / centerX * 3;
+                
+                item.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'perspective(500px) rotateX(0) rotateY(0) translateY(0)';
             });
         });
 
