@@ -3,76 +3,620 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>화미 - 포트폴리오</title>
+    <title>화미 | 일러스트 작가 포트폴리오</title>
     <style>
+        /* ==================== 전역 스타일 ==================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            /* 파스텔 드림 색상 팔레트 */
+            --color-primary: #FFE5EC;
+            --color-secondary: #C7CEEA;
+            --color-accent: #B8E0D2;
+            --color-light: #FFF3E0;
+            --color-text: #4A5568;
+            --color-text-light: #718096;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            height: 100vh;
+            font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==================== 분할 스크린 레이아웃 ==================== */
+        .split-container {
             display: flex;
+            min-height: 100vh;
+        }
+
+        /* 왼쪽 고정 영역 */
+        .left-panel {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 40%;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            z-index: 10;
         }
-        
-        .container {
+
+        .profile-section {
             text-align: center;
-            padding: 60px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
         }
-        
-        h1 {
-            font-size: 72px;
-            color: #2d3748;
-            margin-bottom: 20px;
-            font-weight: 700;
-            letter-spacing: -2px;
-        }
-        
-        p {
-            font-size: 24px;
-            color: #718096;
-            font-weight: 300;
-        }
-        
+
         .profile-image {
             width: 200px;
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
-            border: 5px solid #fff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
         }
-        
+
+        .profile-image:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .profile-section h1 {
+            font-size: 48px;
+            color: var(--color-text);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .profile-section .subtitle {
+            font-size: 20px;
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .profile-section .tagline {
+            font-size: 16px;
+            color: var(--color-text);
+            line-height: 1.8;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        /* 오른쪽 스크롤 영역 */
+        .right-panel {
+            margin-left: 40%;
+            width: 60%;
+            background: white;
+        }
+
+        /* ==================== 섹션 공통 스타일 ==================== */
+        section {
+            padding: 80px 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: var(--color-text);
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--color-secondary);
+            border-radius: 2px;
+        }
+
+        /* ==================== About 섹션 ==================== */
+        #about {
+            background: var(--color-light);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ==================== Skills 섹션 ==================== */
+        #skills {
+            background: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: var(--color-primary);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--color-text);
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            color: var(--color-text-light);
+        }
+
+        /* ==================== Projects 섹션 ==================== */
+        #projects {
+            background: var(--color-accent);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--color-text);
+        }
+
+        .project-info p {
+            font-size: 15px;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        /* ==================== Contact 섹션 ==================== */
+        #contact {
+            background: var(--color-secondary);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--color-text);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: var(--color-text);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ==================== Footer ==================== */
+        footer {
+            background: var(--color-text);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--color-primary);
+        }
+
+        /* ==================== 애니메이션 ==================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 스크롤 애니메이션을 위한 클래스 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==================== 반응형 디자인 ==================== */
+        @media (max-width: 1024px) {
+            .split-container {
+                flex-direction: column;
+            }
+
+            .left-panel {
+                position: relative;
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .right-panel {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            section {
+                padding: 60px 40px;
+                min-height: auto;
+            }
+        }
+
         @media (max-width: 768px) {
-            h1 {
-                font-size: 48px;
+            .profile-section h1 {
+                font-size: 36px;
             }
-            
-            p {
-                font-size: 18px;
+
+            .about-content {
+                flex-direction: column;
             }
-            
-            .container {
-                padding: 40px 30px;
+
+            section {
+                padding: 50px 30px;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-section h1 {
+                font-size: 28px;
+            }
+
+            .profile-section .subtitle {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 40px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="images/profile.jpg" alt="화미 프로필 사진" class="profile-image">
-        <h1>화미</h1>
-        <p>화미's 포트폴리오 사이트</p>
+    <!-- ==================== 분할 스크린 컨테이너 ==================== -->
+    <div class="split-container">
+        <!-- 왼쪽 고정 패널 -->
+        <div class="left-panel">
+            <div class="profile-section">
+                <!-- 프로필 이미지 (placeholder) -->
+                <img src="https://via.placeholder.com/200/FFE5EC/4A5568?text=hwami" alt="화미 프로필" class="profile-image">
+                
+                <!-- 이름 -->
+                <h1>화미<br><span style="font-size: 0.7em; font-weight: 400;">hwami</span></h1>
+                
+                <!-- 직업 -->
+                <p class="subtitle">일러스트 작가</p>
+                
+                <!-- 한 줄 소개 -->
+                <p class="tagline">방송인(푸후)를 서포트하고 있는 귀여운 캐릭터를 주로 그리는 일러스트 작가입니다.</p>
+            </div>
+        </div>
+
+        <!-- 오른쪽 스크롤 패널 -->
+        <div class="right-panel">
+            <!-- ==================== About Me 섹션 ==================== -->
+            <section id="about" class="fade-in">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>안녕하세요! 저는 <strong>화미(hwami)</strong>입니다.</p>
+                        <p>방송인 푸후님을 서포트하며 다양한 귀여운 캐릭터 일러스트를 제작하고 있습니다. 파스텔톤의 부드러운 색감과 사랑스러운 표정으로 많은 분들께 즐거움을 드리고 싶습니다.</p>
+                        <p>디지털 드로잉을 통해 감성적이고 따뜻한 작품을 만들어가고 있으며, 각종 굿즈 디자인과 캐릭터 제작에도 열정을 쏟고 있습니다.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/400x500/C7CEEA/4A5568?text=About+Me" alt="화미 소개 이미지">
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== Skills 섹션 ==================== -->
+            <section id="skills" class="fade-in">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <!-- 스킬 카드 1 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">🎨</div>
+                        <h3>디지털 드로잉</h3>
+                        <p>Procreate, Clip Studio Paint를 활용한 캐릭터 일러스트 제작</p>
+                    </div>
+
+                    <!-- 스킬 카드 2 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">✨</div>
+                        <h3>캐릭터 디자인</h3>
+                        <p>귀여운 캐릭터 컨셉 기획부터 완성까지 전 과정</p>
+                    </div>
+
+                    <!-- 스킬 카드 3 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">🎁</div>
+                        <h3>굿즈 디자인</h3>
+                        <p>스티커, 아크릴 키링 등 다양한 굿즈 디자인</p>
+                    </div>
+
+                    <!-- 스킬 카드 4 -->
+                    <div class="skill-card">
+                        <div class="skill-icon">💝</div>
+                        <h3>이모티콘 제작</h3>
+                        <p>감정 표현이 풍부한 캐릭터 이모티콘 제작</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== Projects 섹션 ==================== -->
+            <section id="projects" class="fade-in">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <!-- 프로젝트 1 -->
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250/FFE5EC/4A5568?text=Project+1" alt="프로젝트 1" class="project-image">
+                        <div class="project-info">
+                            <h3>푸후 캐릭터 시리즈</h3>
+                            <p>방송인 푸후님의 대표 캐릭터 디자인 및 다양한 포즈와 표정 제작. 팬들에게 큰 사랑을 받은 시리즈입니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- 프로젝트 2 -->
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250/C7CEEA/4A5568?text=Project+2" alt="프로젝트 2" class="project-image">
+                        <div class="project-info">
+                            <h3>귀여운 동물 친구들</h3>
+                            <p>파스텔 컬러의 사랑스러운 동물 캐릭터 시리즈. 각 캐릭터마다 독특한 개성을 담았습니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- 프로젝트 3 -->
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250/B8E0D2/4A5568?text=Project+3" alt="프로젝트 3" class="project-image">
+                        <div class="project-info">
+                            <h3>시즌 굿즈 컬렉션</h3>
+                            <p>봄, 여름, 가을, 겨울 각 시즌을 테마로 한 캐릭터 굿즈 디자인 프로젝트입니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- 프로젝트 4 -->
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x250/FFF3E0/4A5568?text=Project+4" alt="프로젝트 4" class="project-image">
+                        <div class="project-info">
+                            <h3>감성 이모티콘 팩</h3>
+                            <p>일상에서 사용하기 좋은 감정 표현 이모티콘 40종 제작. 카카오톡 이모티콘샵 출시 예정.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== Contact 섹션 ==================== -->
+            <section id="contact" class="fade-in">
+                <h2>Contact</h2>
+                <div class="contact-content">
+                    <p>프로젝트 의뢰나 협업 제안은 언제나 환영합니다!<br>아래 연락처로 편하게 연락 주세요.</p>
+                    <div class="contact-links">
+                        <a href="mailto:hwami@example.com" class="contact-btn">📧 이메일</a>
+                        <a href="https://instagram.com/hwami" target="_blank" class="contact-btn">📷 인스타그램</a>
+                        <a href="https://twitter.com/hwami" target="_blank" class="contact-btn">🐦 트위터</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== Footer ==================== -->
+            <footer>
+                <p>© 2025 화미. Powered by <a href="https://ai.triz.kr" target="_blank">AI Portfolio Workshop</a>.</p>
+            </footer>
+        </div>
     </div>
+
+    <!-- ==================== JavaScript ==================== -->
+    <script>
+        // 스크롤 애니메이션 - 섹션이 화면에 나타날 때 fade-in 효과
+        const observerOptions = {
+            threshold: 0.1, // 요소의 10%가 보이면 트리거
+            rootMargin: '0px 0px -50px 0px' // 하단 50px 여유
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // 모든 fade-in 클래스를 가진 요소를 관찰
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 스킬 카드 마이크로 인터랙션 - 마우스 움직임에 따라 미세하게 기울임
+        const skillCards = document.querySelectorAll('.skill-card');
+        
+        skillCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; // 카드 내 마우스 x 위치
+                const y = e.clientY - rect.top;  // 카드 내 마우스 y 위치
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // 중심에서 벗어난 정도를 계산 (-1 ~ 1)
+                const rotateX = (y - centerY) / centerY * -5; // 최대 5도 회전
+                const rotateY = (x - centerX) / centerX * 5;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // 프로젝트 카드 마이크로 인터랙션
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        projectCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / centerY * -3;
+                const rotateY = (x - centerX) / centerX * 3;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // 페이지 로드 시 첫 번째 섹션 바로 표시
+        window.addEventListener('load', () => {
+            document.querySelector('#about').classList.add('visible');
+        });
+    </script>
 </body>
 </html>
