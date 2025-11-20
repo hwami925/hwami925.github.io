@@ -11,8 +11,8 @@
     <div class="header-inner">
       <div class="logo">
         <a href="index.html">
-           <img src="images/logo.png" alt="Hwami 로고" style="height:100px;" />
-  </a>
+          <img src="images/logo.png" alt="Hwami 로고" style="height:100px;" />
+        </a>
       </div>
       <nav class="gnb">
         <a href="profile.html" class="gnb-link">프로필</a>
@@ -27,28 +27,49 @@
     <div class="page-inner">
       <h1 class="section-title">일러스트</h1>
       <p class="section-subtitle">
-        개인 작업 및 팬아트 등, 방송과 직접 연결되지 않은 일러스트들을 모아둘 예정인 공간입니다.
+        개인 작업 및 팬아트 등, 방송과 직접 연결되지 않은 일러스트들을
+        갤러리 형태로 정리하는 공간입니다.
       </p>
 
-      <div class="gallery-grid">
-        <!-- 아직 넣을 작업이 없으면 안내 카드 하나만 두고, 나중에 추가해도 됨 -->
-        <article class="gallery-card">
-          <div class="gallery-thumb">
-            <!-- 나중에 실제 썸네일 이미지 경로로 교체 -->
-            <img src="images/project01.png" alt="샘플 일러스트" />
-          </div>
-          <div class="gallery-body">
-            <div class="gallery-title">샘플 일러스트</div>
-            <div class="gallery-meta">개인 작업 · 예시</div>
-            <a href="#" class="gallery-link">상세 페이지 준비 중입니다.</a>
-          </div>
-        </article>
-      </div>
+      <!-- ⭐ 여기 안을 JS가 자동으로 채울 거야 ⭐ -->
+      <div class="gallery-grid" id="illustration-gallery"></div>
     </div>
   </main>
 
   <footer class="site-footer">
     © 2025 화미. All rights reserved.
   </footer>
+
+  <!-- ⭐ projects.json에서 illustration만 골라서 카드 자동 생성 ⭐ -->
+  <script>
+    fetch('projects.json')
+      .then(res => res.json())
+      .then(projects => {
+        // category가 illustration인 것만 사용
+        const list = projects.filter(p => p.category === 'illustration');
+        const container = document.getElementById('illustration-gallery');
+
+        list.forEach(p => {
+          const card = document.createElement('article');
+          card.className = 'gallery-card';
+          card.innerHTML = `
+            <a href="${p.detail}">
+              <div class="gallery-thumb">
+                <img src="${p.thumb}" alt="${p.title}" />
+              </div>
+              <div class="gallery-body">
+                <div class="gallery-title">${p.title}</div>
+                <div class="gallery-meta">${p.meta}</div>
+                <div class="gallery-link">상세 보기 →</div>
+              </div>
+            </a>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        console.error('일러스트 로드 오류:', err);
+      });
+  </script>
 </body>
 </html>
