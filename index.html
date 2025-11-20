@@ -3,70 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>화미 | 일러스트 작가 포트폴리오</title>
+  <title>Hwami | 메인</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 헤더 -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="logo">HWAMI</div>
-      <nav class="gnb">
-        <a href="index.html" class="gnb-link active">홈</a>
-        <a href="portfolio.html" class="gnb-link">포트폴리오</a>
+  <div class="landing-page">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">
+          <a href="index.html">HWAMI</a>
+        </div>
+        <nav class="gnb">
+          <a href="profile.html" class="gnb-link">프로필</a>
+          <a href="illustration.html" class="gnb-link">일러스트</a>
+          <a href="animation.html" class="gnb-link">애니메이션</a>
+          <a href="broadcasting.html" class="gnb-link">방송</a>
+        </nav>
+      </div>
+    </header>
 
-        <div class="dropdown">
-          <div class="dropdown-toggle gnb-link">
-            소개 ▾
-          </div>
-          <div class="dropdown-menu">
-            <a href="about.html#profile">프로필</a>
-            <a href="about.html#awards">수상경력</a>
-            <a href="about.html#activities">활동이력</a>
-          </div>
+    <main class="landing-inner">
+      <section class="landing-hero">
+        <div class="landing-name">HWAMI</div>
+
+        <div class="landing-profile-wrap">
+          <img src="images/profile.jpg" alt="화미 프로필" />
         </div>
 
-        <a href="contact.html" class="gnb-link">문의</a>
-      </nav>
-    </div>
-  </header>
+        <p class="landing-tagline">Illustlation / Design / Shots / Emotions</p>
+        <p class="landing-sub">
+          방송인 푸후를 서포트하며 다양한 귀여운 캐릭터 일러스트를 작업하고 있는
+          일러스트 작가 화미입니다.
+        </p>
 
-  <!-- 메인 -->
-  <main class="page">
-    <div class="page-inner">
-      <section class="hero">
-        <div class="hero-left">
-          <h1>화미</h1>
-          <div class="hero-tagline">Illustlation / Design / Shots / Emotions</div>
-          <p class="hero-desc">
-            방송인 푸후를 서포트하며 다양한 귀여운 캐릭터 일러스트를 작업하고 있는
-            일러스트 작가입니다.
-          </p>
-
-          <div class="hero-badges">
-            <div class="badge">일러스트 작가</div>
-            <div class="badge">캐릭터 디자인</div>
-            <div class="badge">쇼츠 애니메이션</div>
-          </div>
-
-          <div class="hero-links">
-            <a href="portfolio.html" class="btn-main">포트폴리오 보러가기</a>
-            <a href="about.html" class="btn-sub">소개 더 보기</a>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <div class="hero-profile">
-            <img src="images/profile.jpg" alt="화미 프로필" />
-          </div>
+        <div class="landing-links">
+          <a href="profile.html" class="btn-main">프로필 보러가기</a>
+          <a href="broadcasting.html" class="btn-sub">방송 작업 둘러보기</a>
         </div>
       </section>
-    </div>
-  </main>
+    </main>
 
-  <!-- 푸터 -->
-  <footer class="site-footer">
-    © 2025 화미. All rights reserved.
-  </footer>
+    <footer class="landing-footer">
+      © 2025 화미. All rights reserved.
+    </footer>
+  </div>
 </body>
 </html>
