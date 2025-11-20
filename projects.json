@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bbyu",
+    "title": "쀼쀼송 뮤비",
+    "thumb": "images/project01.png",
+    "meta": "뮤직비디오 · CLIPSTUDIO",
+    "detail": "broadcasting-bbyu.html",
+    "category": "broadcast"
+  },
+  {
+    "id": "goods",
+    "title": "푸후 2주년 굿즈",
+    "thumb": "images/project02.jpeg",
+    "meta": "굿즈 · 키링 / 뱃지 / 쿠션",
+    "detail": "broadcasting-goods.html",
+    "category": "broadcast"
+  },
+  {
+    "id": "badge",
+    "title": "구독뱃지 제작",
+    "thumb": "images/project03.png",
+    "meta": "채널 구독 뱃지 · CLIPSTUDIO",
+    "detail": "broadcasting-badge.html",
+    "category": "broadcast"
+  }
+]
