@@ -1,461 +1,51 @@
-/* ============== 기본 리셋 ============== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --bg: #fffaf3;
-  --bg-alt: #fff5e5;
-  --primary: #ffd86b;
-  --primary-soft: #fff0c2;
-  --accent: #ff7b8a;
-  --text-main: #2f2c28;
-  --text-muted: #7a736d;
-  --border-soft: #efe0cf;
-  --card-bg: #ffffff;
-}
-
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont,
-    "Apple SD Gothic Neo", "맑은 고딕", sans-serif;
-  background: var(--bg);
-  color: var(--text-main);
-  line-height: 1.7;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* ============== 상단 헤더 / 네비게이션 ============== */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255, 250, 243, 0.96);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border-soft);
-}
-
-.header-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0.75rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: 0.16em;
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid var(--primary);
-  background: #fff7db;
-}
-
-.gnb {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.gnb-link {
-  position: relative;
-  padding-bottom: 2px;
-  cursor: pointer;
-}
-
-.gnb-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  border-radius: 999px;
-  background: var(--accent);
-  transition: width 0.2s ease;
-}
-
-.gnb-link:hover::after,
-.gnb-link.active::after {
-  width: 100%;
-}
-
-/* 소개 드롭다운 */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-  cursor: pointer;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 140%;
-  left: 0;
-  min-width: 140px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  border: 1px solid var(--border-soft);
-  padding: 0.4rem 0;
-  display: none;
-  flex-direction: column;
-  font-size: 0.85rem;
-  z-index: 200;
-}
-
-.dropdown-menu a {
-  padding: 0.45rem 0.9rem;
-  white-space: nowrap;
-  color: var(--text-muted);
-}
-
-.dropdown-menu a:hover {
-  background: var(--bg);
-  color: var(--accent);
-}
-
-.dropdown:hover .dropdown-menu {
-  display: flex;
-}
-
-/* ============== 공통 레이아웃 ============== */
-.page {
-  padding: 0 1.5rem 3rem;
-}
-
-.page-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding-top: 4rem;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  display: inline-block;
-}
-
-.section-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 64px;
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-}
-
-.section-subtitle {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-/* ============== 홈(히어로) ============== */
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 2.5rem;
-  align-items: center;
-  padding-bottom: 4rem;
-}
-
-.hero-left h1 {
-  font-size: 3rem;
-  margin-bottom: 0.4rem;
-}
-
-.hero-tagline {
-  font-size: 1rem;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 1.1rem;
-}
-
-.hero-desc {
-  max-width: 420px;
-  font-size: 0.98rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.badge {
-  font-size: 0.78rem;
-  padding: 0.32rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 216, 107, 0.9);
-  background: var(--primary-soft);
-}
-
-.hero-right {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-profile {
-  width: 220px;
-  aspect-ratio: 1 / 1;
-  border-radius: 999px;
-  overflow: hidden;
-  border: 5px solid #ffffff;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
-  background: #fff;
-}
-
-.hero-profile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.btn-main,
-.btn-sub {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.55rem 1.1rem;
-  border-radius: 999px;
-  font-size: 0.88rem;
-  border: none;
-}
-
-.btn-main {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: #fff;
-}
-
-.btn-sub {
-  background: #ffffff;
-  border: 1px solid var(--border-soft);
-  color: var(--text-muted);
-}
-
-/* ============== 포트폴리오 카드 공통 ============== */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.8rem;
-}
-
-.portfolio-card {
-  background: var(--card-bg);
-  border-radius: 18px;
-  border: 1px solid var(--border-soft);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-.portfolio-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
-}
-
-.portfolio-image-wrap {
-  height: 190px;
-  background: var(--bg-alt);
-  overflow: hidden;
-}
-
-.portfolio-image-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.portfolio-body {
-  padding: 1.1rem 1.2rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  flex: 1;
-}
-
-.portfolio-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.portfolio-text {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  flex: 1;
-}
-
-.portfolio-tech {
-  display: inline-block;
-  margin-top: 0.1rem;
-  font-size: 0.78rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  background: var(--bg);
-  border: 1px solid rgba(228, 206, 173, 0.8);
-  color: var(--text-muted);
-}
-
-.portfolio-link {
-  margin-top: 0.6rem;
-  font-size: 0.85rem;
-  color: var(--accent);
-  font-weight: 500;
-}
-
-/* ============== 소개 페이지 ============== */
-.about-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.about-box {
-  background: #fff;
-  border-radius: 18px;
-  border: 1px solid var(--border-soft);
-  padding: 1.4rem 1.6rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
-  margin-bottom: 1rem;
-}
-
-.about-box h3 {
-  font-size: 1.05rem;
-  margin-bottom: 0.6rem;
-}
-
-.about-box p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.about-box ul {
-  list-style: none;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.about-box ul li + li {
-  margin-top: 0.25rem;
-}
-
-.about-note {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: 0.4rem;
-}
-
-/* ============== 문의 페이지 ============== */
-.contact-wrap {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.contact-card {
-  background: #fff;
-  border-radius: 16px;
-  border: 1px solid var(--border-soft);
-  padding: 1.1rem 1.3rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.9rem;
-}
-
-.contact-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.contact-value {
-  font-weight: 500;
-  word-break: break-all;
-}
-
-.contact-card a {
-  color: var(--accent);
-  font-size: 0.9rem;
-}
-
-/* ============== 푸터 ============== */
-.site-footer {
-  padding: 2rem 1.5rem 2.5rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-.site-footer a {
-  color: var(--accent);
-}
-
-/* ============== 반응형 ============== */
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-right {
-    justify-content: flex-start;
-  }
-
-  .about-layout {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .header-inner {
-    padding-inline: 1rem;
-  }
-
-  .page {
-    padding-inline: 1rem;
-  }
-
-  .hero-left h1 {
-    font-size: 2.4rem;
-  }
-
-  .logo {
-    display: none;
-  }
-}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hwami | 메인</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="landing-page">
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">
+          <a href="index.html">HWAMI</a>
+        </div>
+        <nav class="gnb">
+          <a href="profile.html" class="gnb-link">프로필</a>
+          <a href="illustration.html" class="gnb-link">일러스트</a>
+          <a href="animation.html" class="gnb-link">애니메이션</a>
+          <a href="broadcasting.html" class="gnb-link">방송</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="landing-inner">
+      <section class="landing-hero">
+        <div class="landing-name">HWAMI</div>
+
+        <div class="landing-profile-wrap">
+          <img src="images/profile.jpg" alt="화미 프로필" />
+        </div>
+
+        <p class="landing-tagline">Illustlation / Design / Shots / Emotions</p>
+        <p class="landing-sub">
+          방송인 푸후를 서포트하며 다양한 귀여운 캐릭터 일러스트를 작업하고 있는
+          일러스트 작가 화미입니다.
+        </p>
+
+        <div class="landing-links">
+          <a href="profile.html" class="btn-main">프로필 보러가기</a>
+          <a href="broadcasting.html" class="btn-sub">방송 작업 둘러보기</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="landing-footer">
+      © 2025 화미. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
