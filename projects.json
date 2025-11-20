@@ -23,4 +23,13 @@
     "detail": "broadcasting-badge.html",
     "category": "broadcast"
   }
+  {
+  "id": "comic",
+  "title": "푸후 롤 시참 요약 만화",
+  "thumb": "images/comic1.jpeg",
+  "meta": "개인 작업 · 2025 · 팬아트",
+  "detail": "illustration-comic.html",
+  "category": "illustration"
+}
+
 ]
