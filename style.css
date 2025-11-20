@@ -55,13 +55,13 @@ img {
 }
 
 .logo {
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: 0.16em;
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid var(--primary);
-  background: #fff7db;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px; /* 로고 크기 조절 가능 */
+  display: block;
 }
 
 .logo a {
