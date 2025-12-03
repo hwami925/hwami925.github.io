@@ -6,100 +6,101 @@
   <title>Hwami | 메인</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <div class="landing-page">
-    
-    <!-- ================= 헤더 ================= -->
-    <header class="site-header">
-      <div class="header-inner">
-        <div class="logo">
-          <a href="index.html">
-            <img src="images/logo.png" alt="Hwami 로고" style="height:100px;" />
-          </a>
-        </div>
-        <nav class="gnb">
-          <a href="profile.html" class="gnb-link">프로필</a>
-          <a href="illustration.html" class="gnb-link">일러스트</a>
-          <a href="animation.html" class="gnb-link">애니메이션</a>
-          <a href="broadcasting.html" class="gnb-link">방송</a>
-        </nav>
+<div class="landing-page">
+
+  <!-- ================= 헤더 ================= -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="Hwami 로고" style="height:100px;" />
+        </a>
       </div>
-    </header>
+      <nav class="gnb">
+        <a href="profile.html" class="gnb-link">프로필</a>
+        <a href="illustration.html" class="gnb-link">일러스트</a>
+        <a href="animation.html" class="gnb-link">애니메이션</a>
+        <a href="broadcasting.html" class="gnb-link">방송</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- ================= 메인 ================= -->
-    <main class="landing-inner">
+  <!-- ================= 메인 ================= -->
+  <main class="landing-inner">
 
-      <!-- ① 새 메인 히어로 영역 -->
-      <section class="hero-panels">
+    <!-- ① 맨 위의 기존 HWAMI 소개 화면 -->
+    <section class="landing-hero">
 
-        <!-- ILLUST -->
-        <a href="illustration.html" class="hero-panel hero-illust">
-          <div class="hero-panel-inner">
-            <h2 class="hero-title">ILLUST</h2>
+      <div class="landing-name">HWAMI</div>
 
-            <div class="preview-stack">
-              <img src="images/후루 고양이.jpg" alt="일러스트1" class="preview-card" />
-              <img src="images/치사.jpg" alt="일러스트2" class="preview-card" />
-              <img src="images/푸후 붕어빵 한컷.jpg" alt="일러스트3" class="preview-card" />
-            </div>
+      <div class="landing-profile-wrap">
+        <img src="images/profile.jpg" alt="화미 프로필" />
+      </div>
+
+      <p class="landing-tagline">Illustlation / Design / Shots / Emotions</p>
+
+      <p class="landing-sub">
+        방송인 푸후를 서포트하며 다양한 귀여운 캐릭터 일러스트를 작업하고 있는
+        일러스트 작가 화미입니다.
+      </p>
+
+      <div class="landing-links">
+        <a href="profile.html" class="btn-main">프로필 보러가기</a>
+        <a href="broadcasting.html" class="btn-sub">방송 작업 둘러보기</a>
+      </div>
+    </section>
+
+
+    <!-- ② 스크롤하면 등장하는 3개 배너 -->
+    <section class="hero-panels">
+
+      <!-- ILLUST -->
+      <a href="illustration.html" class="hero-panel hero-illust">
+        <div class="hero-panel-inner">
+          <h2 class="hero-title">ILLUST</h2>
+          <div class="preview-stack">
+            <img src="images/후루 고양이.jpg"  class="preview-card" />
+            <img src="images/치사.jpg"        class="preview-card" />
+            <img src="images/푸후 붕어빵 한컷.jpg" class="preview-card" />
           </div>
-        </a>
-
-        <!-- ANIMATION -->
-        <a href="animation.html" class="hero-panel hero-animation">
-          <div class="hero-panel-inner">
-            <h2 class="hero-title">ANIMATION</h2>
-
-            <div class="preview-stack">
-              <img src="images/project01.png" alt="애니메이션1" class="preview-card" />
-              <img src="images/project02.jpeg" alt="애니메이션2" class="preview-card" />
-              <img src="images/project03.png" alt="애니메이션3" class="preview-card" />
-            </div>
-          </div>
-        </a>
-
-        <!-- BROADCAST -->
-        <a href="broadcasting.html" class="hero-panel hero-broadcast">
-          <div class="hero-panel-inner">
-            <h2 class="hero-title">BROADCAST</h2>
-
-            <div class="preview-stack">
-              <img src="images/comic1.jpeg" alt="방송작업1" class="preview-card" />
-              <img src="images/project02.jpeg" alt="방송작업2" class="preview-card" />
-              <img src="images/project03.png" alt="방송작업3" class="preview-card" />
-            </div>
-          </div>
-        </a>
-
-      </section>
-      <!-- ① 끝 -->
-
-      <!-- ② 기존 소개 섹션 -->
-      <section class="landing-hero">
-        <div class="landing-name">HWAMI</div>
-
-        <div class="landing-profile-wrap">
-          <img src="images/profile.jpg" alt="화미 프로필" />
         </div>
+      </a>
 
-        <p class="landing-tagline">Illustlation / Design / Shots / Emotions</p>
-        <p class="landing-sub">
-          방송인 푸후를 서포트하며 다양한 귀여운 캐릭터 일러스트를 작업하고 있는 일러스트 작가 화미입니다.
-        </p>
-
-        <div class="landing-links">
-          <a href="profile.html" class="btn-main">프로필 보러가기</a>
-          <a href="broadcasting.html" class="btn-sub">방송 작업 둘러보기</a>
+      <!-- ANIMATION -->
+      <a href="animation.html" class="hero-panel hero-animation">
+        <div class="hero-panel-inner">
+          <h2 class="hero-title">ANIMATION</h2>
+          <div class="preview-stack">
+            <img src="images/project01.png" class="preview-card" />
+            <img src="images/project02.jpeg" class="preview-card" />
+            <img src="images/project03.png" class="preview-card" />
+          </div>
         </div>
-      </section>
+      </a>
 
-    </main>
+      <!-- BROADCAST -->
+      <a href="broadcasting.html" class="hero-panel hero-broadcast">
+        <div class="hero-panel-inner">
+          <h2 class="hero-title">BROADCAST</h2>
+          <div class="preview-stack">
+            <img src="images/comic1.jpeg" class="preview-card" />
+            <img src="images/project02.jpeg" class="preview-card" />
+            <img src="images/project03.png" class="preview-card" />
+          </div>
+        </div>
+      </a>
 
-    <!-- ================= 푸터 ================= -->
-    <footer class="landing-footer">
-      © 2025 화미. All rights reserved.
-    </footer>
+    </section>
 
-  </div>
+  </main>
+
+  <!-- ================= 푸터 ================= -->
+  <footer class="landing-footer">
+    © 2025 화미. All rights reserved.
+  </footer>
+
+</div>
 </body>
 </html>
