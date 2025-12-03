@@ -60,12 +60,8 @@ img {
 }
 
 .logo img {
-  height: 500px; /* 로고 크기 조절 가능 */
+  height: 500px;
   display: block;
-}
-
-.logo a {
-  color: inherit;
 }
 
 .gnb {
@@ -79,7 +75,6 @@ img {
 .gnb-link {
   position: relative;
   padding-bottom: 2px;
-  cursor: pointer;
 }
 
 .gnb-link::after {
@@ -110,51 +105,28 @@ img {
   padding-top: 4rem;
 }
 
-.section-title {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  display: inline-block;
-}
-
-.section-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 64px;
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-}
-
-.section-subtitle {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-/* ============== 랜딩(메인) 히어로 ============== */
+/* ============== 랜딩(메인) 전체 ============== */
 .landing-page {
-  min-height: 100vh;
   background: radial-gradient(circle at top, #ffe0b5, #ffbfbf 50%, #f4c6ff 100%);
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
+/* 🔥 핵심 수정: flex → block */
 .landing-inner {
   flex: 1;
   max-width: 1040px;
   margin: 0 auto;
-  padding: 4rem 1.5rem 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
+  display: block;
 }
 
+/* ============== 기존 랜딩 HERO ============== */
 .landing-hero {
   text-align: center;
   color: #ffffff;
+  padding: 4rem 1.5rem 3rem;
 }
 
 .landing-name {
@@ -175,17 +147,6 @@ img {
   overflow: hidden;
 }
 
-.landing-profile-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.landing-tagline {
-  font-size: 1rem;
-  margin-bottom: 0.8rem;
-}
-
 .landing-sub {
   font-size: 0.95rem;
   opacity: 0.9;
@@ -200,6 +161,7 @@ img {
   flex-wrap: wrap;
 }
 
+/* ============== 버튼 ============== */
 .btn-main,
 .btn-sub {
   display: inline-flex;
@@ -211,6 +173,7 @@ img {
   border: none;
 }
 
+/* 버튼 스타일 */
 .btn-main {
   background: #ffffff;
   color: #e05773;
@@ -222,6 +185,7 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
+/* ============== 푸터 ============== */
 .landing-footer {
   text-align: center;
   padding: 1.5rem 1.5rem 2rem;
@@ -229,279 +193,8 @@ img {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* ============== 일반 히어로(프로필 상단용) ============== */
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 2.5rem;
-  align-items: center;
-  padding-bottom: 4rem;
-}
-
-.hero-left h1 {
-  font-size: 2.4rem;
-  margin-bottom: 0.4rem;
-}
-
-.hero-tagline {
-  font-size: 1rem;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 1.1rem;
-}
-
-.hero-desc {
-  max-width: 420px;
-  font-size: 0.98rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.badge {
-  font-size: 0.78rem;
-  padding: 0.32rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 216, 107, 0.9);
-  background: var(--primary-soft);
-}
-
-.hero-right {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-profile {
-  width: 200px;
-  aspect-ratio: 1 / 1;
-  border-radius: 999px;
-  overflow: hidden;
-  border: 5px solid #ffffff;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
-  background: #fff;
-}
-
-.hero-profile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ============== About / 프로필 박스 ============== */
-.about-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.about-box {
-  background: #fff;
-  border-radius: 18px;
-  border: 1px solid var(--border-soft);
-  padding: 1.4rem 1.6rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
-  margin-bottom: 1rem;
-}
-
-.about-box h3 {
-  font-size: 1.05rem;
-  margin-bottom: 0.6rem;
-}
-
-.about-box p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.about-box ul {
-  list-style: none;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.about-box ul li + li {
-  margin-top: 0.25rem;
-}
-
-.about-note {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: 0.4rem;
-}
-
-/* ============== 갤러리(일러/애니/방송) ============== */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-
-.gallery-card {
-  background: var(--card-bg);
-  border-radius: 18px;
-  border: 1px solid var(--border-soft);
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.gallery-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
-}
-
-.gallery-thumb {
-  height: 180px;
-  background: var(--bg-alt);
-  overflow: hidden;
-}
-
-.gallery-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.gallery-body {
-  padding: 1rem 1.1rem 1.1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.gallery-title {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.gallery-meta {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-.gallery-link {
-  margin-top: 0.3rem;
-  font-size: 0.85rem;
-  color: var(--accent);
-}
-
-/* ============== 상세 페이지(프로젝트 디테일) ============== */
-.detail-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.detail-image {
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--border-soft);
-  background: #fff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-}
-
-.detail-content h1 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.detail-tagline {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
-
-.detail-text {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
-
-.detail-meta {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.detail-meta span {
-  display: inline-block;
-  margin-right: 0.75rem;
-}
-
-.btn-external {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.55rem 1.1rem;
-  border-radius: 999px;
-  font-size: 0.88rem;
-  border: none;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: #fff;
-}
-
-/* ============== 푸터 ============== */
-.site-footer {
-  padding: 2rem 1.5rem 2.5rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-/* ============== 반응형 ============== */
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-right {
-    justify-content: flex-start;
-  }
-
-  .about-layout,
-  .detail-layout {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .header-inner {
-    padding-inline: 1rem;
-  }
-
-  .page {
-    padding-inline: 1rem;
-  }
-
-  .landing-inner {
-    padding-inline: 1rem;
-  }
-
-  .landing-name {
-    font-size: 2.4rem;
-  }
-
-  .hero-left h1 {
-    font-size: 2.1rem;
-  }
-
-  .logo {
-    display: none;
-  }
-}
-
 /* =========================================================
-   🔥 새 메인 히어로 패널 (화미 전용 버전)
+   🔥 새 메인 히어로 패널(ILLUST / ANIMATION / BROADCAST)
    ========================================================= */
 
 .hero-panels {
@@ -511,18 +204,15 @@ img {
   flex-direction: column;
 }
 
-/* 각각의 3개 패널 공통 스타일 */
 .hero-panel {
   position: relative;
   flex: 1 1 33.333%;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
   overflow: hidden;
 }
 
-/* 텍스트 위치 중앙 정렬 */
 .hero-panel-inner {
   position: relative;
   width: 100%;
@@ -534,7 +224,6 @@ img {
   transition: transform 0.45s ease;
 }
 
-/* 제목 스타일 */
 .hero-title {
   position: relative;
   z-index: 2;
@@ -542,12 +231,11 @@ img {
   font-weight: 700;
   letter-spacing: 0.18em;
   color: #ffffff;
-  text-align: center;
   text-shadow: 0 3px 8px rgba(0,0,0,0.35);
+  pointer-events: none;
 }
 
-/* ========= 패턴 배경 — 화미 파일명 적용 ========= */
-
+/* ==== 화미 패턴 이미지 적용 ==== */
 .hero-illust {
   background:
     linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.15)),
@@ -566,8 +254,7 @@ img {
     url("images/pattern03.jpg") center/cover no-repeat;
 }
 
-/* ========= 썸네일 스택 효과 ========= */
-
+/* 썸네일 스택 */
 .preview-stack {
   position: absolute;
   left: 6vw;
@@ -577,31 +264,27 @@ img {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  z-index: 1;
   transition:
-    transform 0.55s cubic-bezier(0.19, 1, 0.22, 1),
+    transform 0.55s cubic-bezier(0.19,1,0.22,1),
     opacity 0.45s ease;
 }
 
-/* hover 시 슬라이드 + 페이드인 */
+/* hover 효과 */
 .hero-panel:hover .preview-stack {
   transform: translate(0, -50%);
   opacity: 1;
 }
 
-/* 카드 이미지 공통 스타일 */
 .preview-card {
   width: 160px;
   max-width: 30vw;
   border-radius: 10px;
-  object-fit: cover;
   box-shadow:
-    0 10px 20px rgba(0, 0, 0, 0.25),
-    0 0 0 3px rgba(255, 255, 255, 0.9);
-  background-color: #ffffff;
+    0 10px 20px rgba(0,0,0,0.25),
+    0 0 0 3px rgba(255,255,255,0.9);
 }
 
-/* 살짝 자연스러운 겹침 각도 */
+/* 자연스러운 기울기 */
 .preview-card:nth-child(1) {
   transform: rotate(-10deg) translateX(-6px);
 }
@@ -612,35 +295,25 @@ img {
   transform: rotate(8deg) translateX(10px);
 }
 
-/* hover 시 패널 전체 확대 */
+/* 패널 자체 확대 */
 .hero-panel:hover .hero-panel-inner {
   transform: scale(1.015);
 }
 
-/* ========= 반응형 ========= */
-
+/* 모바일 */
 @media (max-width: 768px) {
-
   .hero-panels {
     min-height: auto;
   }
-
   .hero-panel {
-    flex: 0 0 auto;
     height: 260px;
   }
-
   .preview-stack {
     left: 5%;
     transform: translate(0, -50%);
-    opacity: 1; /* 모바일에서는 항상 표시 */
+    opacity: 1;
   }
-
   .preview-card {
     width: 130px;
-  }
-
-  .hero-title {
-    font-size: 1.8rem;
   }
 }
