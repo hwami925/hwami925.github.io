@@ -242,18 +242,20 @@ img {
   flex-direction: column;
 }
 
+/* 각 패널 – 오른쪽에 패턴 배너, 왼쪽은 비워두는 구조 */
 .hero-panel {
   position: relative;
   flex: 1 1 33.333%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  justify-content: flex-end;
+  overflow: visible; /* 카드가 밖으로 나가도 보이게 */
 }
 
+/* 실제 패턴 배너 부분 */
 .hero-panel-inner {
   position: relative;
-  width: 100%;
+  width: 70%;
   height: 100%;
   padding: 0 8vw;
   display: flex;
@@ -273,31 +275,31 @@ img {
   pointer-events: none;
 }
 
-/* ==== 화미 패턴 이미지 적용 ==== */
-.hero-illust {
+/* ==== 화미 패턴 이미지 적용 (inner에 배경 입힘) ==== */
+.hero-illust .hero-panel-inner {
   background:
     linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.15)),
     url("images/pattern01.jpg") center/cover no-repeat;
 }
 
-.hero-animation {
+.hero-animation .hero-panel-inner {
   background:
     linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.15)),
     url("images/pattern02.jpg") center/cover no-repeat;
 }
 
-.hero-broadcast {
+.hero-broadcast .hero-panel-inner {
   background:
     linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4)),
     url("images/pattern03.jpg") center/cover no-repeat;
 }
 
-/* 썸네일 스택 */
+/* 썸네일 스택 – 패턴 왼쪽 바깥에서 나오는 느낌 */
 .preview-stack {
   position: absolute;
-  left: 6vw;
+  left: 18vw;
   top: 50%;
-  transform: translate(-80px, -50%);
+  transform: translate(-140px, -50%); /* 처음엔 거의 가려진 상태 */
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -307,12 +309,17 @@ img {
     opacity 0.45s ease;
 }
 
-/* hover 효과 */
+/* hover 시: 패턴은 오른쪽으로 살짝 밀리고, 카드가 안으로 슬라이드 */
+.hero-panel:hover .hero-panel-inner {
+  transform: translateX(4vw);
+}
+
 .hero-panel:hover .preview-stack {
   transform: translate(0, -50%);
   opacity: 1;
 }
 
+/* 카드 기본 스타일 */
 .preview-card {
   width: 160px;
   max-width: 30vw;
@@ -331,11 +338,6 @@ img {
 }
 .preview-card:nth-child(3) {
   transform: rotate(8deg) translateX(10px);
-}
-
-/* 패널 자체 확대 */
-.hero-panel:hover .hero-panel-inner {
-  transform: scale(1.015);
 }
 
 /* ============== (다른 페이지용) 일반 히어로 ============== */
@@ -587,14 +589,23 @@ img {
   .hero-panels {
     min-height: auto;
   }
+
   .hero-panel {
-    height: 260px;
+    justify-content: center;
   }
+
+  .hero-panel-inner {
+    width: 100%;
+    padding: 0 4vw;
+    transform: none !important;
+  }
+
   .preview-stack {
-    left: 5%;
+    left: 8%;
     transform: translate(0, -50%);
     opacity: 1;
   }
+
   .preview-card {
     width: 130px;
   }
