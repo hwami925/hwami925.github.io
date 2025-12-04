@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hwami | 메인</title>
 
-  <!-- 공통 + 홈 CSS -->
+  <!-- 공통 CSS -->
   <link rel="stylesheet" href="common.css" />
+  <!-- 메인 전용 CSS -->
   <link rel="stylesheet" href="home.css" />
 </head>
 
@@ -19,9 +20,10 @@
     <div class="header-inner">
       <div class="logo">
         <a href="index.html">
-          <img src="images/logo.png" alt="Hwami 로고" style="height:100px;" />
+          <img src="images/logo.png" alt="Hwami 로고" />
         </a>
       </div>
+
       <nav class="gnb">
         <a href="profile.html" class="gnb-link">프로필</a>
         <a href="illustration.html" class="gnb-link">일러스트</a>
@@ -31,74 +33,59 @@
     </div>
   </header>
 
-  <!-- ================= HWAMI 소개 ================= -->
-  <main class="home-inner">
+  <!-- ================= 메인 콘텐츠 ================= -->
+  <main class="home-main">
 
-      <div class="landing-name">HWAMI</div>
+    <!-- 상단 : 왼쪽 서랍 카드 + 오른쪽 패턴 3단 -->
+    <section class="home-top">
 
-      <div class="landing-profile-wrap">
-        <img src="images/profile.jpg" alt="화미 프로필" />
+      <!-- 왼쪽 : 일러스트 카드 서랍 -->
+      <div class="home-art-column">
+        <div class="art-stack">
+          <img src="images/후루 고양이.jpg" alt="일러스트 1" class="art-card art-card-1" />
+          <img src="images/치사.jpg" alt="일러스트 2" class="art-card art-card-2" />
+          <img src="images/푸후 붕어빵 한컷.jpg" alt="일러스트 3" class="art-card art-card-3" />
+        </div>
       </div>
 
-      <p class="landing-tagline">Illustlation / Design / Shots / Emotions</p>
+      <!-- 오른쪽 : 패턴 3단 + 중앙 텍스트 -->
+      <div class="hero-bands">
 
-      <p class="landing-sub">
-        방송인 푸후를 서포트하며 다양한 귀여운 캐릭터 일러스트를 작업하고 있는
-        일러스트 작가 화미입니다.
-      </p>
+        <a href="illustration.html" class="hero-band hero-band-illust">
+          <span class="hero-band-title">ILLUST</span>
+        </a>
 
-      <div class="landing-links">
-        <a href="profile.html" class="btn-main">프로필 보러가기</a>
+        <a href="animation.html" class="hero-band hero-band-animation">
+          <span class="hero-band-title">ANIMATION</span>
+        </a>
+
+        <a href="broadcasting.html" class="hero-band hero-band-broadcast">
+          <span class="hero-band-title">BROADCAST</span>
+        </a>
+
       </div>
+    </section>
+
+    <!-- 아래 : HWAMI 소개 + 버튼 -->
+    <section class="home-intro">
+      <div class="home-intro-inner">
+        <div class="landing-name">HWAMI</div>
+
+        <p class="landing-tagline">Illustration / Design / Shots / Emotions</p>
+
+        <p class="landing-sub">
+          방송인 푸후를 서포트하며 다양한 귀여운 캐릭터 일러스트를 작업하고 있는
+          일러스트 작가 화미입니다.
+        </p>
+
+        <div class="landing-links">
+          <a href="profile.html" class="btn-main">프로필 보러가기</a>
+          <a href="broadcasting.html" class="btn-sub">방송 작업 둘러보기</a>
+        </div>
+      </div>
+    </section>
 
   </main>
-
-  <!-- ================= 3개 카테고리 배너 ================= -->
-  <section class="hero-panels">
-
-    <!-- ILLUST -->
-    <a href="illustration.html" class="hero-link">
-      <div class="hero-panel hero-illust">
-        <div class="preview-stack">
-          <img src="images/후루 고양이.jpg" class="preview-card" />
-          <img src="images/치사.jpg" class="preview-card" />
-          <img src="images/푸후 붕어빵 한컷.jpg" class="preview-card" />
-        </div>
-        <div class="hero-panel-inner">
-          <h2 class="hero-title">ILLUST</h2>
-        </div>
-      </div>
-    </a>
-
-    <!-- ANIMATION -->
-    <a href="animation.html" class="hero-link">
-      <div class="hero-panel hero-animation">
-        <div class="preview-stack">
-          <img src="images/project01.png" class="preview-card" />
-          <img src="images/project02.jpeg" class="preview-card" />
-          <img src="images/project03.png" class="preview-card" />
-        </div>
-        <div class="hero-panel-inner">
-          <h2 class="hero-title">ANIMATION</h2>
-        </div>
-      </div>
-    </a>
-
-    <!-- BROADCAST -->
-    <a href="broadcasting.html" class="hero-link">
-      <div class="hero-panel hero-broadcast">
-        <div class="preview-stack">
-          <img src="images/project01.png" class="preview-card" />
-          <img src="images/project02.jpeg" class="preview-card" />
-          <img src="images/project03.png" class="preview-card" />
-        </div>
-        <div class="hero-panel-inner">
-          <h2 class="hero-title">BROADCAST</h2>
-        </div>
-      </div>
-    </a>
-
-  </section>
 
   <!-- ================= 푸터 ================= -->
   <footer class="landing-footer">
