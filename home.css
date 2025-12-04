@@ -1,4 +1,110 @@
 /* =========================================================
+   HOME PAGE — GLOBAL STYLE
+   (index.html 전용)
+========================================================= */
+
+/* 메인 전체 배경 (파스텔 그라데이션) */
+.home-landing {
+  min-height: 100vh;
+  background: radial-gradient(
+      circle at top,
+      #ffe0b5,
+      #ffbfbf 55%,
+      #f4c6ff 100%
+    );
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   HWAMI 소개 섹션
+========================================================= */
+
+.home-inner {
+  width: 100%;              /* ⭐ 가운데 정렬 위해 추가 */
+  max-width: 1040px;
+  margin: 0 auto;
+
+  text-align: center;
+  color: #ffffff;
+  padding: 4rem 1.5rem 3rem;
+}
+
+.landing-name {
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.landing-profile-wrap {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  border: 6px solid rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+.landing-profile-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.landing-tagline {
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+}
+
+.landing-sub {
+  font-size: 0.95rem;
+  opacity: 0.95;
+  max-width: 420px;
+  margin: 0.5rem auto 2rem;
+}
+
+.landing-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+/* 버튼 */
+.btn-main,
+.btn-sub {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.btn-main {
+  background: #ffffff;
+  color: #e05773;
+}
+
+.btn-sub {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+}
+
+/* 메인 전용 푸터 (흰색 계열 텍스트) */
+.page-home .landing-footer {
+  text-align: center;
+  padding: 1.5rem 1.5rem 2rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* =========================================================
    3개 카테고리 패널 — ILLUST / ANIMATION / BROADCAST
 ========================================================= */
 
@@ -9,26 +115,63 @@
   margin-top: 1rem;
 }
 
+/* 전체를 a 태그로 감쌌기 때문에 블록으로 */
 .hero-link {
   display: block;
   text-decoration: none;
   color: inherit;
 }
 
-/* 🔥 grid 제거! flex 구조로 변경 */
 .hero-panel {
-  height: 33vh;
-  display: flex;
+  height: 33vh; /* 세 개가 화면을 비슷하게 나눠 가지도록 */
+  display: grid;
+  grid-template-columns: 1fr 1.35fr; /* 왼쪽은 여백/카드, 오른쪽은 패턴 */
+  overflow: hidden;
   align-items: center;
   position: relative;
-  overflow: hidden;
 }
 
-/* 왼쪽 카드 (자연 너비 차지하도록 수정) */
+/* 오른쪽 배너 영역 */
+.hero-panel-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 5vw;
+  transition: transform 0.45s ease;
+}
+
+/* 텍스트 (ILLUST / ANIMATION / BROADCAST) */
+.hero-title {
+  font-size: clamp(2.6rem, 4vw, 3.5rem);
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4px 12px rgba(0,0,0,.35);
+  z-index: 3;
+  pointer-events: none; /* 텍스트 위에서도 클릭이 패널 전체에 먹도록 */
+}
+
+/* 오른쪽 배경 패턴 */
+.hero-illust .hero-panel-inner {
+  background: url("images/pattern01.jpg") center/cover no-repeat;
+}
+
+.hero-animation .hero-panel-inner {
+  background: url("images/pattern02.jpg") center/cover no-repeat;
+}
+
+.hero-broadcast .hero-panel-inner {
+  background: url("images/pattern03.jpg") center/cover no-repeat;
+}
+
+/* =========================================================
+   왼쪽 카드 스택 애니메이션
+========================================================= */
+
 .preview-stack {
-  margin-left: 2rem;
   position: relative;
-  left: -140px;
+  left: -140px;             /* 처음엔 화면 밖 */
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -45,54 +188,12 @@
     0 0 0 3px rgba(255,255,255,.95);
 }
 
+/* 카드 회전으로 자연스러운 스택 느낌 */
 .preview-card:nth-child(1) { transform: rotate(-9deg); }
 .preview-card:nth-child(2) { transform: rotate(-2deg); }
 .preview-card:nth-child(3) { transform: rotate(7deg); }
 
-/* 🔥 오른쪽 패턴 영역을 flex:1로 지정 — 화면 너비 기준 정중앙 확보 */
-.hero-panel-inner {
-  flex: 1;
-  height: 100%;
-  position: relative;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  transition: transform 0.45s ease;
-}
-
-/* 🔥 텍스트는 절대 중앙 */
-.hero-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  font-size: clamp(2.6rem, 4vw, 3.5rem);
-  letter-spacing: 0.18em;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 4px 12px rgba(0,0,0,.35);
-  pointer-events: none;
-}
-
-/* 패턴 이미지 */
-.hero-illust .hero-panel-inner {
-  background-image: url("images/pattern01.jpg");
-}
-.hero-animation .hero-panel-inner {
-  background-image: url("images/pattern02.jpg");
-}
-.hero-broadcast .hero-panel-inner {
-  background-image: url("images/pattern03.jpg");
-}
-
-/* Hover 효과 */
+/* Hover 애니메이션 */
 .hero-panel:hover .hero-panel-inner {
   transform: translateX(25px);
 }
@@ -102,12 +203,20 @@
   left: 0;
 }
 
-/* 반응형 */
+/* =========================================================
+   반응형
+========================================================= */
+
 @media (max-width: 900px) {
   .hero-panel {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     height: auto;
     padding: 2rem 0;
+  }
+
+  .hero-panel-inner {
+    padding: 2rem 1rem;
+    transform: none !important;
   }
 
   .preview-stack {
@@ -117,10 +226,20 @@
     justify-content: center;
     gap: 10px;
     margin-bottom: 1.2rem;
-    left: 0 !important;
   }
 
   .preview-card {
     width: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .landing-name {
+    font-size: 2.4rem;
+  }
+
+  .landing-profile-wrap {
+    width: 170px;
+    height: 170px;
   }
 }
