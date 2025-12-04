@@ -38,37 +38,45 @@ a {
 }
 
 /* =========================================================
-   HEADER
+   HEADER — 모든 페이지 공통
 ========================================================= */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
-  background: rgba(255, 250, 243, 0.95);
+  z-index: 100;
+  background: rgba(255, 250, 243, 0.94);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border-soft);
 }
 
 .header-inner {
   max-width: 1040px;
-  padding: 0.8rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* ===== 로고 크기 통일 (모든 페이지 동일) ===== */
+.logo img {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* 메뉴(GNB) 공통 */
 .gnb {
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 1.2rem;
   font-size: 0.95rem;
   color: var(--text-muted);
 }
 
 .gnb-link {
   position: relative;
-  padding-bottom: 2px;
+  padding-bottom: 3px;
 }
 
 .gnb-link::after {
@@ -80,7 +88,7 @@ a {
   position: absolute;
   left: 0;
   bottom: 0;
-  transition: 0.25s;
+  transition: width 0.23s ease;
 }
 
 .gnb-link:hover::after,
@@ -89,7 +97,7 @@ a {
 }
 
 /* =========================================================
-   PAGE LAYOUT
+   PAGE LAYOUT — 공통
 ========================================================= */
 .page {
   padding: 2.5rem 1.5rem 4rem;
@@ -127,8 +135,9 @@ a {
 }
 
 /* =========================================================
-   GALLERY GRID (일러/애니/방송 페이지)
+   GALLERY GRID — 일러스트 / 방송 / 애니메이션
 ========================================================= */
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -140,13 +149,13 @@ a {
   border: 1px solid var(--border-soft);
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
-  transition: 0.25s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  transition: 0.23s ease;
 }
 
 .gallery-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.08);
 }
 
 .gallery-thumb {
@@ -171,14 +180,21 @@ a {
 }
 
 .gallery-meta {
-  margin-top: 0.35rem;
+  margin-top: 0.4rem;
   font-size: 0.78rem;
   color: var(--text-muted);
+}
+
+.gallery-link {
+  margin-top: 0.45rem;
+  color: var(--accent);
+  font-size: 0.85rem;
 }
 
 /* =========================================================
    DETAIL PAGE (프로젝트 상세)
 ========================================================= */
+
 .detail-layout {
   display: grid;
   grid-template-columns: 2fr 3fr;
@@ -190,23 +206,23 @@ a {
   overflow: hidden;
   border: 1px solid var(--border-soft);
   background: #fff;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.06);
 }
 
 .detail-content h1 {
   font-size: 1.8rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: .6rem;
 }
 
 .detail-tagline {
-  font-size: 0.9rem;
+  font-size: .9rem;
   color: var(--text-muted);
   margin-bottom: 1rem;
 }
 
 .detail-text {
   margin-bottom: 1rem;
-  font-size: 0.93rem;
+  font-size: .93rem;
   color: var(--text-muted);
 }
 
@@ -233,5 +249,9 @@ a {
 @media (max-width: 640px) {
   .header-inner {
     padding-inline: 1rem;
+  }
+
+  .logo img {
+    height: 76px;
   }
 }
