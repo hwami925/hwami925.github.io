@@ -4,14 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>일러스트 | 화미</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- 공통 CSS -->
+  <link rel="stylesheet" href="common.css" />
+
+  <!-- 갤러리 전용 CSS -->
+  <link rel="stylesheet" href="gallery.css" />
 </head>
-<body>
+
+<body class="page-gallery">
+
+  <!-- ================= 헤더 ================= -->
   <header class="site-header">
     <div class="header-inner">
       <div class="logo">
         <a href="index.html">
-          <img src="images/logo.png" alt="Hwami 로고" style="height:100px;" />
+          <img src="images/logo.png" alt="Hwami 로고" />
         </a>
       </div>
       <nav class="gnb">
@@ -23,29 +31,32 @@
     </div>
   </header>
 
+  <!-- ================= 내용 ================= -->
   <main class="page">
     <div class="page-inner">
+
       <h1 class="section-title">일러스트</h1>
       <p class="section-subtitle">
         개인 작업 및 팬아트 등, 방송과 직접 연결되지 않은 일러스트들을
         갤러리 형태로 정리하는 공간입니다.
       </p>
 
-      <!-- ⭐ 여기 안을 JS가 자동으로 채울 거야 ⭐ -->
+      <!-- JS가 자동으로 채울 영역 -->
       <div class="gallery-grid" id="illustration-gallery"></div>
+
     </div>
   </main>
 
+  <!-- ================= 푸터 ================= -->
   <footer class="site-footer">
     © 2025 화미. All rights reserved.
   </footer>
 
-  <!-- ⭐ projects.json에서 illustration만 골라서 카드 자동 생성 ⭐ -->
+  <!-- ================= JS: 일러스트 자동 로드 ================= -->
   <script>
     fetch('projects.json')
       .then(res => res.json())
       .then(projects => {
-        // category가 illustration인 것만 사용
         const list = projects.filter(p => p.category === 'illustration');
         const container = document.getElementById('illustration-gallery');
 
@@ -71,5 +82,6 @@
         console.error('일러스트 로드 오류:', err);
       });
   </script>
+
 </body>
 </html>
