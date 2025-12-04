@@ -1,6 +1,5 @@
 /* =========================================================
    HOME PAGE — GLOBAL STYLE
-   (index.html 전용)
 ========================================================= */
 
 /* 메인 전체 배경 (파스텔 그라데이션) */
@@ -21,13 +20,13 @@
 ========================================================= */
 
 .home-inner {
-  width: 100%;              /* ⭐ 가운데 정렬 위해 추가 */
-  max-width: 1040px;
-  margin: 0 auto;
-
   text-align: center;
   color: #ffffff;
   padding: 4rem 1.5rem 3rem;
+
+  /* hero-panels에 가려지지 않도록 */
+  position: relative;
+  z-index: 10;
 }
 
 .landing-name {
@@ -96,8 +95,8 @@
   color: #ffffff;
 }
 
-/* 메인 전용 푸터 (흰색 계열 텍스트) */
-.page-home .landing-footer {
+/* 메인 전용 푸터 */
+.landing-footer {
   text-align: center;
   padding: 1.5rem 1.5rem 2rem;
   font-size: 0.8rem;
@@ -112,10 +111,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 1rem;
+
+  /* home-inner보다 아래로 배치 */
+  position: relative;
+  z-index: 1;
 }
 
-/* 전체를 a 태그로 감쌌기 때문에 블록으로 */
 .hero-link {
   display: block;
   text-decoration: none;
@@ -123,25 +124,25 @@
 }
 
 .hero-panel {
-  height: 33vh; /* 세 개가 화면을 비슷하게 나눠 가지도록 */
+  height: 33vh;
   display: grid;
-  grid-template-columns: 1fr 1.35fr; /* 왼쪽은 여백/카드, 오른쪽은 패턴 */
+  grid-template-columns: 1fr 1.35fr;
   overflow: hidden;
   align-items: center;
   position: relative;
 }
 
-/* 오른쪽 배너 영역 */
 .hero-panel-inner {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 5vw;
+
+  /* 텍스트가 정확히 중앙에 있도록 보장 */
+  padding: 0;
   transition: transform 0.45s ease;
 }
 
-/* 텍스트 (ILLUST / ANIMATION / BROADCAST) */
 .hero-title {
   font-size: clamp(2.6rem, 4vw, 3.5rem);
   letter-spacing: 0.18em;
@@ -149,29 +150,27 @@
   color: #fff;
   text-shadow: 0 4px 12px rgba(0,0,0,.35);
   z-index: 3;
-  pointer-events: none; /* 텍스트 위에서도 클릭이 패널 전체에 먹도록 */
+  pointer-events: none;
 }
 
-/* 오른쪽 배경 패턴 */
+/* 배경 패턴 */
 .hero-illust .hero-panel-inner {
   background: url("images/pattern01.jpg") center/cover no-repeat;
 }
-
 .hero-animation .hero-panel-inner {
   background: url("images/pattern02.jpg") center/cover no-repeat;
 }
-
 .hero-broadcast .hero-panel-inner {
   background: url("images/pattern03.jpg") center/cover no-repeat;
 }
 
 /* =========================================================
-   왼쪽 카드 스택 애니메이션
+   카드 스택 애니메이션
 ========================================================= */
 
 .preview-stack {
   position: relative;
-  left: -140px;             /* 처음엔 화면 밖 */
+  left: -140px;
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -188,7 +187,7 @@
     0 0 0 3px rgba(255,255,255,.95);
 }
 
-/* 카드 회전으로 자연스러운 스택 느낌 */
+/* 회전 효과 */
 .preview-card:nth-child(1) { transform: rotate(-9deg); }
 .preview-card:nth-child(2) { transform: rotate(-2deg); }
 .preview-card:nth-child(3) { transform: rotate(7deg); }
@@ -206,7 +205,6 @@
 /* =========================================================
    반응형
 ========================================================= */
-
 @media (max-width: 900px) {
   .hero-panel {
     grid-template-columns: 1fr;
@@ -215,7 +213,6 @@
   }
 
   .hero-panel-inner {
-    padding: 2rem 1rem;
     transform: none !important;
   }
 
@@ -237,7 +234,6 @@
   .landing-name {
     font-size: 2.4rem;
   }
-
   .landing-profile-wrap {
     width: 170px;
     height: 170px;
