@@ -641,3 +641,82 @@ img {
     display: none;
   }
 }
+
+/* ================= HERO PANELS (최종 수정본) ================= */
+
+.hero-panels {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-panel {
+  position: relative;
+  height: 33.33vh;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr; /* 왼쪽 여백, 오른쪽 패턴 */
+  align-items: center;
+  overflow: hidden;
+}
+
+/* 오른쪽 패턴 배너 */
+.hero-panel-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .45s ease;
+}
+
+/* 제목 */
+.hero-title {
+  font-size: 3rem;
+  color: #fff;
+  letter-spacing: 0.2em;
+  text-shadow: 0 5px 14px rgba(0,0,0,.4);
+  z-index: 2;
+}
+
+/* 패턴 배경 */
+.hero-illust .hero-panel-inner {
+  background: url("images/pattern01.jpg") center/cover no-repeat;
+}
+.hero-animation .hero-panel-inner {
+  background: url("images/pattern02.jpg") center/cover no-repeat;
+}
+.hero-broadcast .hero-panel-inner {
+  background: url("images/pattern03.jpg") center/cover no-repeat;
+}
+
+/* 카드 스택 (왼쪽에서 등장) */
+.preview-stack {
+  position: relative;
+  left: -120px; /* 처음에는 숨겨진 상태 */
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all .55s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.preview-card {
+  width: 160px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.25),
+              0 0 0 3px #fff;
+}
+
+/* 약간 기울어짐 */
+.preview-card:nth-child(1) { transform: rotate(-9deg); }
+.preview-card:nth-child(2) { transform: rotate(1deg); }
+.preview-card:nth-child(3) { transform: rotate(9deg); }
+
+/* Hover 효과 */
+.hero-panel:hover .hero-panel-inner {
+  transform: translateX(25px);
+}
+
+.hero-panel:hover .preview-stack {
+  left: 0;
+  opacity: 1;
+}
