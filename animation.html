@@ -4,49 +4,89 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>애니메이션 | 화미</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- 공통 스타일 -->
+  <link rel="stylesheet" href="common.css" />
+
+  <!-- 갤러리 스타일 -->
+  <link rel="stylesheet" href="gallery.css" />
 </head>
-<body>
+
+<body class="page-gallery">
+
+  <!-- ================= 헤더 ================= -->
   <header class="site-header">
     <div class="header-inner">
+
       <div class="logo">
         <a href="index.html">
-           <img src="images/logo.png" alt="Hwami 로고" style="height:100px;" />
-  </a>
+          <img src="images/logo.png" alt="Hwami 로고" />
+        </a>
       </div>
+
       <nav class="gnb">
         <a href="profile.html" class="gnb-link">프로필</a>
         <a href="illustration.html" class="gnb-link">일러스트</a>
         <a href="animation.html" class="gnb-link active">애니메이션</a>
         <a href="broadcasting.html" class="gnb-link">방송</a>
       </nav>
+
     </div>
   </header>
 
+  <!-- ================= 본문 ================= -->
   <main class="page">
     <div class="page-inner">
+
       <h1 class="section-title">애니메이션</h1>
       <p class="section-subtitle">
-        쇼츠용 모션, 뮤비 연출 등 영상 관련 작업을 모아둘 공간입니다.
+        쇼츠용 모션, 뮤비 연출 등 영상 작업들을 정리한 공간입니다.
       </p>
 
-      <div class="gallery-grid">
-        <article class="gallery-card">
-          <div class="gallery-thumb">
-            <img src="images/project01.png" alt="샘플 애니메이션" />
-          </div>
-          <div class="gallery-body">
-            <div class="gallery-title">샘플 애니메이션</div>
-            <div class="gallery-meta">작업 정리 예정</div>
-            <a href="#" class="gallery-link">상세 페이지 준비 중입니다.</a>
-          </div>
-        </article>
-      </div>
+      <!-- 갤러리 영역 -->
+      <div class="gallery-grid" id="animation-gallery"></div>
+
     </div>
   </main>
 
+  <!-- ================= 푸터 ================= -->
   <footer class="site-footer">
     © 2025 화미. All rights reserved.
   </footer>
+
+  <!-- ================= JSON 기반 데이터 로드 ================= -->
+  <script>
+    fetch('projects.json')
+      .then(res => res.json())
+      .then(projects => {
+
+        // category가 animation인 것만 필터링
+        const list = projects.filter(p => p.category === 'animation');
+        const container = document.getElementById('animation-gallery');
+
+        list.forEach(p => {
+          const card = document.createElement('article');
+          card.className = 'gallery-card';
+
+          card.innerHTML = `
+            <a href="${p.detail}">
+              <div class="gallery-thumb">
+                <img src="${p.thumb}" alt="${p.title}" />
+              </div>
+              <div class="gallery-body">
+                <div class="gallery-title">${p.title}</div>
+                <div class="gallery-meta">${p.meta}</div>
+                <div class="gallery-link">상세 보기 →</div>
+              </div>
+            </a>
+          `;
+
+          container.appendChild(card);
+        });
+
+      })
+      .catch(err => console.error('애니메이션 로드 오류:', err));
+  </script>
+
 </body>
 </html>
