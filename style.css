@@ -60,7 +60,7 @@ img {
 }
 
 .logo img {
-  height: 500px; /* 헤더 안 로고 크기(HTML에서 style로 100px 주면 그게 우선) */
+  height: 500px; /* HTML에서 100px로 override됨 */
   display: block;
 }
 
@@ -94,60 +94,9 @@ img {
   width: 100%;
 }
 
-/* ============== 공통 레이아웃 ============== */
-.page {
-  padding: 0 1.5rem 3rem;
-}
+/* ============== 랜딩(HWAMI 소개) ============== */
 
-.page-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding-top: 4rem;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  display: inline-block;
-}
-
-.section-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 64px;
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-}
-
-.section-subtitle {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-/* ============== 랜딩(메인) 전체 ============== */
-.landing-page {
-  background: radial-gradient(circle at top, #ffe0b5, #ffbfbf 50%, #f4c6ff 100%);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* 메인 컨테이너 */
 .landing-inner {
-  flex: 1;
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0;
-  display: block;
-}
-
-/* ============== 기존 랜딩 HERO (맨 위 HWAMI 영역) ============== */
-.landing-hero {
   text-align: center;
   color: #ffffff;
   padding: 4rem 1.5rem 4rem;
@@ -196,7 +145,6 @@ img {
   flex-wrap: wrap;
 }
 
-/* ============== 버튼 ============== */
 .btn-main,
 .btn-sub {
   display: inline-flex;
@@ -219,442 +167,29 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-/* ============== 푸터 ============== */
 .landing-footer {
   text-align: center;
   padding: 1.5rem 1.5rem 2rem;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.9);
 }
-
 /* =========================================================
-   🔥 새 메인 히어로 패널 (ILLUST / ANIMATION / BROADCAST)
+   ⭐ HERO PANELS (ILLUST / ANIMATION / BROADCAST)
    ========================================================= */
 
-/* 컨테이너는 페이지 폭 안에서만 사용 */
-.hero-panels {
-  width: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* 각 패널: 왼쪽은 카드 공간, 오른쪽은 패턴 배너 */
-.hero-panel {
-  position: relative;
-  flex: 1 1 33.333%;
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
-  align-items: center;
-  overflow: visible;
-}
-
-/* 패턴 배너가 들어가는 오른쪽 칸 */
-.hero-panel-inner {
-  grid-column: 2 / 3;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 0 6vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.45s ease;
-}
-
-/* 텍스트 */
-.hero-title {
-  position: relative;
-  z-index: 2;
-  font-size: clamp(2.4rem, 4vw, 3.4rem);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: #ffffff;
-  text-shadow: 0 3px 8px rgba(0,0,0,0.35);
-  pointer-events: none;
-}
-
-/* ==== 패턴 배경은 inner에 적용 ==== */
-.hero-illust .hero-panel-inner {
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.15)),
-    url("images/pattern01.jpg") center/cover no-repeat;
-}
-
-.hero-animation .hero-panel-inner {
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.15)),
-    url("images/pattern02.jpg") center/cover no-repeat;
-}
-
-.hero-broadcast .hero-panel-inner {
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4)),
-    url("images/pattern03.jpg") center/cover no-repeat;
-}
-
-/* 썸네일 스택 – 왼쪽 칸에서 슬라이드 */
-.preview-stack {
-  grid-column: 1 / 2;
-  justify-self: center;
-  position: relative;
-  top: 0;
-  transform: translateX(-60px); /* 처음엔 살짝 가려진 상태 */
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition:
-    transform 0.55s cubic-bezier(0.19,1,0.22,1),
-    opacity 0.45s ease;
-}
-
-/* hover 시: 패턴은 오른쪽으로 살짝 밀리고, 카드가 안으로 슬라이드 */
-.hero-panel:hover .hero-panel-inner {
-  transform: translateX(20px);
-}
-
-.hero-panel:hover .preview-stack {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-/* 카드 기본 스타일 */
-.preview-card {
-  width: 160px;
-  max-width: 30vw;
-  border-radius: 10px;
-  box-shadow:
-    0 10px 20px rgba(0,0,0,0.25),
-    0 0 0 3px rgba(255,255,255,0.9);
-}
-
-/* 자연스러운 기울기 */
-.preview-card:nth-child(1) {
-  transform: rotate(-10deg) translateX(-6px);
-}
-.preview-card:nth-child(2) {
-  transform: rotate(-2deg);
-}
-.preview-card:nth-child(3) {
-  transform: rotate(8deg) translateX(10px);
-}
-
-/* ============== (다른 페이지용) 일반 히어로 ============== */
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 2.5rem;
-  align-items: center;
-  padding-bottom: 4rem;
-}
-
-.hero-left h1 {
-  font-size: 2.4rem;
-  margin-bottom: 0.4rem;
-}
-
-.hero-tagline {
-  font-size: 1rem;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 1.1rem;
-}
-
-.hero-desc {
-  max-width: 420px;
-  font-size: 0.98rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.badge {
-  font-size: 0.78rem;
-  padding: 0.32rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 216, 107, 0.9);
-  background: var(--primary-soft);
-}
-
-.hero-right {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-profile {
-  width: 200px;
-  aspect-ratio: 1 / 1;
-  border-radius: 999px;
-  overflow: hidden;
-  border: 5px solid #ffffff;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
-  background: #fff;
-}
-
-.hero-profile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ============== About / 프로필 박스 ============== */
-.about-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.about-box {
-  background: #fff;
-  border-radius: 18px;
-  border: 1px solid var(--border-soft);
-  padding: 1.4rem 1.6rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
-  margin-bottom: 1rem;
-}
-
-.about-box h3 {
-  font-size: 1.05rem;
-  margin-bottom: 0.6rem;
-}
-
-.about-box p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.about-box ul {
-  list-style: none;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.about-box ul li + li {
-  margin-top: 0.25rem;
-}
-
-.about-note {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: 0.4rem;
-}
-
-/* ============== 갤러리(일러/애니/방송) ============== */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-
-.gallery-card {
-  background: var(--card-bg);
-  border-radius: 18px;
-  border: 1px solid var(--border-soft);
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.gallery-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
-}
-
-.gallery-thumb {
-  height: 180px;
-  background: var(--bg-alt);
-  overflow: hidden;
-}
-
-.gallery-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.gallery-body {
-  padding: 1rem 1.1rem 1.1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.gallery-title {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.gallery-meta {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-.gallery-link {
-  margin-top: 0.3rem;
-  font-size: 0.85rem;
-  color: var(--accent);
-}
-
-/* ============== 상세 페이지(프로젝트 디테일) ============== */
-.detail-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.detail-image {
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--border-soft);
-  background: #fff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-}
-
-.detail-content h1 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.detail-tagline {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
-
-.detail-text {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
-
-.detail-meta {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.detail-meta span {
-  display: inline-block;
-  margin-right: 0.75rem;
-}
-
-.btn-external {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.55rem 1.1rem;
-  border-radius: 999px;
-  font-size: 0.88rem;
-  border: none;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: #fff;
-}
-
-/* ============== 푸터(공통) ============== */
-.site-footer {
-  padding: 2rem 1.5rem 2.5rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-/* ============== 반응형 ============== */
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-right {
-    justify-content: flex-start;
-  }
-
-  .about-layout,
-  .detail-layout {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-panels {
-    min-height: auto;
-  }
-
-  .hero-panel {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-panel-inner {
-    grid-column: 1 / 2;
-    padding: 0 4vw;
-    transform: none !important;
-  }
-
-  .preview-stack {
-    grid-column: 1 / 2;
-    margin-top: -10px;
-    transform: translateX(0);
-    opacity: 1;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .preview-card {
-    width: 110px;
-  }
-}
-
-@media (max-width: 640px) {
-  .header-inner {
-    padding-inline: 1rem;
-  }
-
-  .page {
-    padding-inline: 1rem;
-  }
-
-  .landing-inner {
-    padding-inline: 1rem;
-  }
-
-  .landing-name {
-    font-size: 2.4rem;
-  }
-
-  .hero-left h1 {
-    font-size: 2.1rem;
-  }
-
-  .logo {
-    display: none;
-  }
-}
-
-/* ================= HERO PANELS (최종 수정본) ================= */
-
 .hero-panels {
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-top: 2rem;
 }
 
+/* 각 패널 구조 → 왼쪽은 카드, 오른쪽은 패턴 */
 .hero-panel {
   position: relative;
   height: 33.33vh;
   display: grid;
-  grid-template-columns: 1fr 1.3fr; /* 왼쪽 여백, 오른쪽 패턴 */
+  grid-template-columns: 1fr 1.3fr;
   align-items: center;
   overflow: hidden;
 }
@@ -665,19 +200,22 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 6vw;
   transition: transform .45s ease;
 }
 
-/* 제목 */
+/* 패널 제목 */
 .hero-title {
-  font-size: 3rem;
-  color: #fff;
-  letter-spacing: 0.2em;
-  text-shadow: 0 5px 14px rgba(0,0,0,.4);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+  text-shadow: 0 5px 14px rgba(0,0,0,.38);
   z-index: 2;
+  pointer-events: none;
 }
 
-/* 패턴 배경 */
+/* ==== 패턴 이미지 (오른쪽 영역에 적용) ==== */
 .hero-illust .hero-panel-inner {
   background: url("images/pattern01.jpg") center/cover no-repeat;
 }
@@ -688,10 +226,12 @@ img {
   background: url("images/pattern03.jpg") center/cover no-repeat;
 }
 
-/* 카드 스택 (왼쪽에서 등장) */
+/* ===========================================
+   썸네일 카드 스택 (왼쪽에서 튀어나오는 구조)
+   =========================================== */
 .preview-stack {
   position: relative;
-  left: -120px; /* 처음에는 숨겨진 상태 */
+  left: -140px;    /* 처음엔 거의 보이지 않음 */
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -699,24 +239,175 @@ img {
   transition: all .55s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+/* 썸네일 카드 스타일 */
 .preview-card {
   width: 160px;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,.25),
-              0 0 0 3px #fff;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .25),
+              0 0 0 3px rgba(255, 255, 255, .9);
 }
 
-/* 약간 기울어짐 */
-.preview-card:nth-child(1) { transform: rotate(-9deg); }
-.preview-card:nth-child(2) { transform: rotate(1deg); }
-.preview-card:nth-child(3) { transform: rotate(9deg); }
+/* 카드 회전으로 자연스러운 스택 느낌 */
+.preview-card:nth-child(1) { transform: rotate(-10deg); }
+.preview-card:nth-child(2) { transform: rotate(-2deg); }
+.preview-card:nth-child(3) { transform: rotate(8deg); }
 
-/* Hover 효과 */
+/* ===========================================
+   Hover Interaction
+   =========================================== */
 .hero-panel:hover .hero-panel-inner {
-  transform: translateX(25px);
+  transform: translateX(30px);
 }
 
 .hero-panel:hover .preview-stack {
   left: 0;
   opacity: 1;
+}
+
+/* ===========================================
+   MOBILE 반응형
+   =========================================== */
+@media (max-width: 900px) {
+  .hero-panel {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .hero-panel-inner {
+    padding: 2rem 2rem;
+    transform: none !important;
+  }
+
+  .preview-stack {
+    left: 0 !important;
+    opacity: 1 !important;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+
+  .preview-card {
+    width: 120px;
+  }
+}
+/* =========================================================
+   ⭐ HERO PANELS (ILLUST / ANIMATION / BROADCAST)
+   ========================================================= */
+
+.hero-panels {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+/* 각 패널 구조 → 왼쪽은 카드, 오른쪽은 패턴 */
+.hero-panel {
+  position: relative;
+  height: 33.33vh;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* 오른쪽 패턴 배너 */
+.hero-panel-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6vw;
+  transition: transform .45s ease;
+}
+
+/* 패널 제목 */
+.hero-title {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+  text-shadow: 0 5px 14px rgba(0,0,0,.38);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ==== 패턴 이미지 (오른쪽 영역에 적용) ==== */
+.hero-illust .hero-panel-inner {
+  background: url("images/pattern01.jpg") center/cover no-repeat;
+}
+.hero-animation .hero-panel-inner {
+  background: url("images/pattern02.jpg") center/cover no-repeat;
+}
+.hero-broadcast .hero-panel-inner {
+  background: url("images/pattern03.jpg") center/cover no-repeat;
+}
+
+/* ===========================================
+   썸네일 카드 스택 (왼쪽에서 튀어나오는 구조)
+   =========================================== */
+.preview-stack {
+  position: relative;
+  left: -140px;    /* 처음엔 거의 보이지 않음 */
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all .55s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* 썸네일 카드 스타일 */
+.preview-card {
+  width: 160px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .25),
+              0 0 0 3px rgba(255, 255, 255, .9);
+}
+
+/* 카드 회전으로 자연스러운 스택 느낌 */
+.preview-card:nth-child(1) { transform: rotate(-10deg); }
+.preview-card:nth-child(2) { transform: rotate(-2deg); }
+.preview-card:nth-child(3) { transform: rotate(8deg); }
+
+/* ===========================================
+   Hover Interaction
+   =========================================== */
+.hero-panel:hover .hero-panel-inner {
+  transform: translateX(30px);
+}
+
+.hero-panel:hover .preview-stack {
+  left: 0;
+  opacity: 1;
+}
+
+/* ===========================================
+   MOBILE 반응형
+   =========================================== */
+@media (max-width: 900px) {
+  .hero-panel {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .hero-panel-inner {
+    padding: 2rem 2rem;
+    transform: none !important;
+  }
+
+  .preview-stack {
+    left: 0 !important;
+    opacity: 1 !important;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+
+  .preview-card {
+    width: 120px;
+  }
 }
