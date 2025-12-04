@@ -77,6 +77,7 @@
   padding: 0.55rem 1.15rem;
   border-radius: 999px;
   font-size: 0.88rem;
+  cursor: pointer;
 }
 
 .btn-main {
@@ -109,10 +110,16 @@
   margin-top: 1rem;
 }
 
+.hero-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .hero-panel {
-  height: 33.33vh;
+  height: 33vh;
   display: grid;
-  grid-template-columns: 1fr 1.35fr; /* 왼쪽 카드, 오른쪽 배너 */
+  grid-template-columns: 1fr 1.35fr;
   overflow: hidden;
   align-items: center;
   position: relative;
@@ -138,7 +145,7 @@
   pointer-events: none;
 }
 
-/* 오른쪽 배너 배경 */
+/* 배경 패턴 */
 .hero-illust .hero-panel-inner {
   background: url("images/pattern01.jpg") center/cover no-repeat;
 }
@@ -150,12 +157,12 @@
 }
 
 /* =========================================================
-   왼쪽 카드가 바깥에서 들어오는 애니메이션
+   카드 스택 애니메이션
 ========================================================= */
 
 .preview-stack {
   position: relative;
-  left: -140px;  /* 처음엔 화면 밖 */
+  left: -140px;
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -172,15 +179,12 @@
     0 0 0 3px rgba(255,255,255,.95);
 }
 
-/* 카드 스택 회전 */
+/* 회전 효과 */
 .preview-card:nth-child(1) { transform: rotate(-9deg); }
 .preview-card:nth-child(2) { transform: rotate(-2deg); }
 .preview-card:nth-child(3) { transform: rotate(7deg); }
 
-/* =========================================================
-   Hover 시 효과
-========================================================= */
-
+/* Hover 애니메이션 */
 .hero-panel:hover .hero-panel-inner {
   transform: translateX(25px);
 }
@@ -223,7 +227,6 @@
   .landing-name {
     font-size: 2.4rem;
   }
-
   .landing-profile-wrap {
     width: 170px;
     height: 170px;
