@@ -4,16 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>방송 | 화미</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- 공통 CSS -->
+  <link rel="stylesheet" href="common.css" />
+
+  <!-- 갤러리 전용 CSS -->
+  <link rel="stylesheet" href="gallery.css" />
 </head>
-<body>
+
+<body class="page-gallery">
+
+  <!-- ================= 헤더 ================= -->
   <header class="site-header">
     <div class="header-inner">
       <div class="logo">
         <a href="index.html">
-          <img src="images/logo.png" alt="Hwami 로고" style="height:100px;" />
+          <img src="images/logo.png" alt="Hwami 로고" />
         </a>
       </div>
+
       <nav class="gnb">
         <a href="profile.html" class="gnb-link">프로필</a>
         <a href="illustration.html" class="gnb-link">일러스트</a>
@@ -23,25 +32,28 @@
     </div>
   </header>
 
+  <!-- ================= 페이지 내용 ================= -->
   <main class="page">
     <div class="page-inner">
+
       <h1 class="section-title">방송</h1>
       <p class="section-subtitle">
         방송인 푸후와 함께 진행한 방송 관련 작업들을 모아둔 갤러리입니다.
         각 카드 클릭 시 상세 페이지로 이동합니다.
       </p>
 
-      <!-- ⭐ 자동으로 갤러리가 채워질 영역 ⭐ -->
+      <!-- JSON으로 자동 채워지는 영역 -->
       <div class="gallery-grid" id="broadcast-gallery"></div>
 
     </div>
   </main>
 
+  <!-- ================= 푸터 ================= -->
   <footer class="site-footer">
     © 2025 화미. All rights reserved.
   </footer>
 
-  <!-- ⭐ JSON 기반 자동 갤러리 생성 스크립트 ⭐ -->
+  <!-- ================= 프로젝트 자동 로드 스크립트 ================= -->
   <script>
     fetch('projects.json')
       .then(res => res.json())
