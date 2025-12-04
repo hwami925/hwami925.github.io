@@ -1,34 +1,5 @@
 /* =========================================================
-   HOME PAGE — GLOBAL STYLE
-========================================================= */
-
-/* 메인 전체 배경 (파스텔 그라데이션) */
-.home-landing {
-  min-height: 100vh;
-  background: radial-gradient(
-      circle at top,
-      #ffe0b5,
-      #ffbfbf 55%,
-      #f4c6ff 100%
-    );
-  display: flex;
-  flex-direction: column;
-}
-
-/* =========================================================
-   HWAMI 소개 섹션
-========================================================= */
-
-.home-inner {
-  text-align: center;
-  color: #ffffff;
-  padding: 4rem 1.5rem 3rem;
-}
-
-/* ... (소개 섹션은 변경 없음, 생략) ... */
-
-/* =========================================================
-   3개 카테고리 패널
+   3개 카테고리 패널 — ILLUST / ANIMATION / BROADCAST
 ========================================================= */
 
 .hero-panels {
@@ -44,6 +15,7 @@
   color: inherit;
 }
 
+/* 🔥 grid 제거! flex 구조로 변경 */
 .hero-panel {
   height: 33vh;
   display: flex;
@@ -52,7 +24,7 @@
   overflow: hidden;
 }
 
-/* 왼쪽 카드 */
+/* 왼쪽 카드 (자연 너비 차지하도록 수정) */
 .preview-stack {
   margin-left: 2rem;
   position: relative;
@@ -77,30 +49,50 @@
 .preview-card:nth-child(2) { transform: rotate(-2deg); }
 .preview-card:nth-child(3) { transform: rotate(7deg); }
 
-/* 오른쪽 패턴 영역 */
+/* 🔥 오른쪽 패턴 영역을 flex:1로 지정 — 화면 너비 기준 정중앙 확보 */
 .hero-panel-inner {
   flex: 1;
   height: 100%;
   position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  transition: transform 0.45s ease;
 }
 
-/* 텍스트 완전 중앙 배치 */
+/* 🔥 텍스트는 절대 중앙 */
 .hero-title {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   font-size: clamp(2.6rem, 4vw, 3.5rem);
   letter-spacing: 0.18em;
   font-weight: 700;
   color: #fff;
   text-shadow: 0 4px 12px rgba(0,0,0,.35);
+  pointer-events: none;
 }
 
-/* 호버 효과 */
+/* 패턴 이미지 */
+.hero-illust .hero-panel-inner {
+  background-image: url("images/pattern01.jpg");
+}
+.hero-animation .hero-panel-inner {
+  background-image: url("images/pattern02.jpg");
+}
+.hero-broadcast .hero-panel-inner {
+  background-image: url("images/pattern03.jpg");
+}
+
+/* Hover 효과 */
 .hero-panel:hover .hero-panel-inner {
   transform: translateX(25px);
 }
@@ -110,13 +102,25 @@
   left: 0;
 }
 
-/* 배경 패턴 */
-.hero-illust .hero-panel-inner {
-  background-image: url("images/pattern01.jpg");
-}
-.hero-animation .hero-panel-inner {
-  background-image: url("images/pattern02.jpg");
-}
-.hero-broadcast .hero-panel-inner {
-  background-image: url("images/pattern03.jpg");
+/* 반응형 */
+@media (max-width: 900px) {
+  .hero-panel {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .preview-stack {
+    position: static;
+    opacity: 1;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.2rem;
+    left: 0 !important;
+  }
+
+  .preview-card {
+    width: 120px;
+  }
 }
