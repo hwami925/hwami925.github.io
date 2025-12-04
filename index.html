@@ -3,95 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hwami | 메인</title>
-
-  <!-- 공통 CSS -->
-  <link rel="stylesheet" href="common.css" />
-  <!-- 메인 전용 CSS -->
-  <link rel="stylesheet" href="home.css" />
+  <title>Hwami Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body>
 
-<body class="page-home">
-
-<div class="home-landing">
-
-  <!-- ================= 헤더 ================= -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="logo">
-        <a href="index.html">
-          <img src="images/logo.png" alt="Hwami 로고" />
-        </a>
+  <!-- ====== 1. 프로필 섹션 (현재 구조랑 비슷하게 예시) ====== -->
+  <header class="profile-section">
+    <div class="profile-inner">
+      <img src="images/profile.jpg" alt="Hwami Profile" class="profile-avatar" />
+      <div class="profile-text">
+        <h1 class="profile-name">HWAMI</h1>
+        <p class="profile-desc">
+          따뜻한 색감으로 이야기하는 디지털 크리에이터 · 일러스트레이터 화미입니다.
+        </p>
+        <a href="profile.html" class="profile-button">프로필 보러가기</a>
       </div>
-
-      <nav class="gnb">
-        <a href="profile.html" class="gnb-link">프로필</a>
-        <a href="illustration.html" class="gnb-link">일러스트</a>
-        <a href="animation.html" class="gnb-link">애니메이션</a>
-        <a href="broadcasting.html" class="gnb-link">방송</a>
-      </nav>
     </div>
   </header>
 
-  <!-- ================= 메인 콘텐츠 ================= -->
-  <main class="home-main">
+  <!-- ====== 2. 카테고리 3개 16:9 서랍 섹션 ====== -->
+  <main>
 
-    <!-- 상단 : 왼쪽 서랍 카드 + 오른쪽 패턴 3단 -->
-    <section class="home-top">
+    <!-- 공통: 16:9 전체폭 밴드를 위한 래퍼 -->
+    <section class="categories">
 
-      <!-- 왼쪽 : 일러스트 카드 서랍 -->
-      <div class="home-art-column">
-        <div class="art-stack">
-          <img src="images/후루 고양이.jpg" alt="일러스트 1" class="art-card art-card-1" />
-          <img src="images/치사.jpg" alt="일러스트 2" class="art-card art-card-2" />
-          <img src="images/푸후 붕어빵 한컷.jpg" alt="일러스트 3" class="art-card art-card-3" />
+      <!-- === ILLUST 섹션 === -->
+      <div class="category-band category-illust">
+        <div class="category-inner">
+
+          <!-- 뒤에 숨어 있다가 나오는 그림 카드들 -->
+          <div class="category-cards">
+            <img src="images/치사.jpg" alt="치사 일러스트" />
+            <img src="images/푸후 붕어빵 한컷.jpg" alt="푸후 붕어빵 컷" />
+            <img src="images/후루 고양이.jpg" alt="후루 고양이 그림" />
+          </div>
+
+          <!-- 위에 덮여 있다가 오른쪽으로 슬라이드 되는 패턴 레이어 -->
+          <div class="pattern-layer">
+            <span class="category-label">ILLUST</span>
+          </div>
         </div>
       </div>
 
-      <!-- 오른쪽 : 패턴 3단 + 중앙 텍스트 -->
-      <div class="hero-bands">
+      <!-- === ANIMATION 섹션 (이미지는 더미, 나중에 교체해도 됨) === -->
+      <div class="category-band category-animation">
+        <div class="category-inner">
 
-        <a href="illustration.html" class="hero-band hero-band-illust">
-          <span class="hero-band-title">ILLUST</span>
-        </a>
+          <div class="category-cards">
+            <img src="images/animation01.png" alt="애니메이션 작업 1" />
+            <img src="images/animation02.png" alt="애니메이션 작업 2" />
+            <img src="images/animation03.png" alt="애니메이션 작업 3" />
+          </div>
 
-        <a href="animation.html" class="hero-band hero-band-animation">
-          <span class="hero-band-title">ANIMATION</span>
-        </a>
-
-        <a href="broadcasting.html" class="hero-band hero-band-broadcast">
-          <span class="hero-band-title">BROADCAST</span>
-        </a>
-
-      </div>
-    </section>
-
-    <!-- 아래 : HWAMI 소개 + 버튼 -->
-    <section class="home-intro">
-      <div class="home-intro-inner">
-        <div class="landing-name">HWAMI</div>
-
-        <p class="landing-tagline">Illustration / Design / Shots / Emotions</p>
-
-        <p class="landing-sub">
-          방송인 푸후를 서포트하며 다양한 귀여운 캐릭터 일러스트를 작업하고 있는
-          일러스트 작가 화미입니다.
-        </p>
-
-        <div class="landing-links">
-          <a href="profile.html" class="btn-main">프로필 보러가기</a>
-          <a href="broadcasting.html" class="btn-sub">방송 작업 둘러보기</a>
+          <div class="pattern-layer">
+            <span class="category-label">ANIMATION</span>
+          </div>
         </div>
       </div>
-    </section>
 
+      <!-- === BROADCAST 섹션 === -->
+      <div class="category-band category-broadcast">
+        <div class="category-inner">
+
+          <div class="category-cards">
+            <img src="images/project01.png" alt="방송 프로젝트 1" />
+            <img src="images/project02.jpeg" alt="방송 프로젝트 2" />
+            <img src="images/project03.png" alt="방송 프로젝트 3" />
+          </div>
+
+          <div class="pattern-layer">
+            <span class="category-label">BROADCAST</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
   </main>
 
-  <!-- ================= 푸터 ================= -->
-  <footer class="landing-footer">
-    © 2025 화미. All rights reserved.
-  </footer>
-
-</div>
 </body>
 </html>
