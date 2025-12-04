@@ -82,7 +82,9 @@
     0 0 0 4px rgba(255, 255, 255, 0.98);
 }
 
-/* ---------------- 오른쪽 패턴 3단 ---------------- */
+/* =========================================================
+   오른쪽 패턴 3단 — **슬라이드 서랍 구조로 변경됨**
+========================================================= */
 
 .hero-bands {
   flex: 1 1 auto;
@@ -93,78 +95,112 @@
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
 }
 
-/* 각 밴드 전체가 클릭 가능 */
+/* hero-band를 슬라이드 가능한 래퍼로 재구성 */
 .hero-band {
   position: relative;
   flex: 1 1 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  color: #ffffff;
-  text-align: center;
   cursor: pointer;
+  overflow: hidden;
+  background: #000;
 }
 
-/* 가운데 텍스트 */
+/* --- 텍스트 --- */
 .hero-band-title {
   position: relative;
-  z-index: 2;
+  z-index: 5;
   font-size: clamp(1.6rem, 2vw, 2.1rem);
   letter-spacing: 0.25em;
   font-weight: 700;
   text-transform: uppercase;
+  color: #fff;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
 
-/* 패턴 배경 + 살짝 어두운 오버레이 (글자 가독성) */
-.hero-band::before {
-  content: "";
+/* --- 패턴 레이어 (hover 시 오른쪽으로 이동) --- */
+.hero-band-pattern {
   position: absolute;
   inset: 0;
+  z-index: 3;
   background-position: center;
   background-size: cover;
   background-repeat: repeat;
-  opacity: 1;
+  transition: transform 0.6s ease;
 }
 
-.hero-band::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.08),
-    rgba(0, 0, 0, 0.24)
-  );
-  mix-blend-mode: multiply;
-}
-
-/* 개별 패턴 이미지 연결 */
-.hero-band-illust::before {
+/* 패턴마다 배경 지정 */
+.hero-band-illust .hero-band-pattern {
   background-image: url("images/pattern01.jpg");
 }
-.hero-band-animation::before {
+.hero-band-animation .hero-band-pattern {
   background-image: url("images/pattern02.jpg");
 }
-.hero-band-broadcast::before {
+.hero-band-broadcast .hero-band-pattern {
   background-image: url("images/pattern03.jpg");
 }
 
-/* 살짝 인터랙션 */
-.hero-band:hover {
-  transform: translateY(-2px);
+/* 어두운 오버레이 (가독성 유지) */
+.hero-band-overlay {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: rgba(0,0,0,0.22);
+  mix-blend-mode: multiply;
 }
-.hero-band:hover::after {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.3)
-  );
+
+/* --- 카드(이미지) 레이어 (hover 시 등장) --- */
+.hero-band-cards {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding-inline: 3vw;
+
+  transform: translateX(-22%);
+  opacity: 0;
+  transition: transform 0.55s ease, opacity 0.55s ease;
+}
+
+.hero-band-cards img {
+  height: 70%;
+  width: auto;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease;
+}
+
+/* 카드 delay — 줄줄이 나오는 효과 */
+.hero-band-cards img:nth-child(2) { transition-delay: 0.08s; }
+.hero-band-cards img:nth-child(3) { transition-delay: 0.14s; }
+
+/* =========================================================
+   Hover Animation — 핵심 서랍 모션
+========================================================= */
+
+/* 패턴이 오른쪽으로 밀려남 */
+.hero-band:hover .hero-band-pattern {
+  transform: translateX(40%);
+}
+
+/* 카드가 왼쪽에서 튀어나오는 느낌 */
+.hero-band:hover .hero-band-cards {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+/* 카드 zoom 느낌 */
+.hero-band:hover .hero-band-cards img {
+  transform: translateY(-3px);
 }
 
 /* =========================================================
-   아래 : HWAMI 소개 섹션
+   아래 : HWAMI 소개 섹션 (기존 그대로)
 ========================================================= */
 
 .home-intro {
@@ -226,11 +262,6 @@
   background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.7);
   color: #ffffff;
-}
-
-/* 메인 전용 푸터 색상 보정 */
-.landing-footer {
-  color: rgba(255, 255, 255, 0.9);
 }
 
 /* =========================================================
