@@ -1,5 +1,5 @@
 /* =========================================================
-   HOME PAGE — GLOBAL STYLE
+   HOME PAGE — LAYOUT & STYLE
 ========================================================= */
 
 /* 메인 전체 배경 (파스텔 그라데이션) */
@@ -15,61 +15,193 @@
   flex-direction: column;
 }
 
+/* 메인 컨테이너 */
+.home-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 2.5rem;
+}
+
 /* =========================================================
-   HWAMI 소개 섹션
+   상단 : 왼쪽 서랍 카드 + 오른쪽 패턴 밴드
 ========================================================= */
 
-.home-inner {
+.home-top {
+  display: flex;
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+/* ---------------- 왼쪽 서랍 카드 ---------------- */
+
+.home-art-column {
+  flex: 0 0 36%;
+  display: flex;
+  align-items: center;
+}
+
+.art-stack {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin-left: auto;
+}
+
+/* 카드 공통 */
+.art-card {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.25),
+    0 0 0 4px rgba(255, 255, 255, 0.95);
+  object-fit: cover;
+  display: block;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 살짝 겹쳐진 서랍 느낌 */
+.art-card-1 {
+  transform: translateY(0) rotate(-4deg);
+  z-index: 3;
+}
+.art-card-2 {
+  transform: translateY(-40px) rotate(2deg);
+  z-index: 2;
+}
+.art-card-3 {
+  transform: translateY(-80px) rotate(-3deg);
+  z-index: 1;
+}
+
+/* hover 시 맨 위 카드가 살짝 들리는 느낌 */
+.art-stack:hover .art-card-1 {
+  transform: translateY(-5px) rotate(-2deg);
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 4px rgba(255, 255, 255, 0.98);
+}
+
+/* ---------------- 오른쪽 패턴 3단 ---------------- */
+
+.hero-bands {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
+}
+
+/* 각 밴드 전체가 클릭 가능 */
+.hero-band {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* 가운데 텍스트 */
+.hero-band-title {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(1.6rem, 2vw, 2.1rem);
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* 패턴 배경 + 살짝 어두운 오버레이 (글자 가독성) */
+.hero-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
+  opacity: 1;
+}
+
+.hero-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.08),
+    rgba(0, 0, 0, 0.24)
+  );
+  mix-blend-mode: multiply;
+}
+
+/* 개별 패턴 이미지 연결 */
+.hero-band-illust::before {
+  background-image: url("images/pattern01.jpg");
+}
+.hero-band-animation::before {
+  background-image: url("images/pattern02.jpg");
+}
+.hero-band-broadcast::before {
+  background-image: url("images/pattern03.jpg");
+}
+
+/* 살짝 인터랙션 */
+.hero-band:hover {
+  transform: translateY(-2px);
+}
+.hero-band:hover::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+/* =========================================================
+   아래 : HWAMI 소개 섹션
+========================================================= */
+
+.home-intro {
+  margin-top: 3rem;
   text-align: center;
   color: #ffffff;
-  padding: 4rem 1.5rem 3rem;
+}
 
-  /* hero-panels에 가려지지 않도록 */
-  position: relative;
-  z-index: 10;
+.home-intro-inner {
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .landing-name {
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
-  margin-bottom: 1.5rem;
+  letter-spacing: 0.18em;
+  margin-bottom: 1.2rem;
   text-transform: uppercase;
 }
 
-.landing-profile-wrap {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  margin: 0 auto 1.5rem;
-  border: 6px solid rgba(255, 255, 255, 0.9);
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
-}
-
-.landing-profile-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .landing-tagline {
-  font-size: 1.05rem;
-  margin-bottom: 0.8rem;
+  font-size: 0.98rem;
+  margin-bottom: 0.7rem;
 }
 
 .landing-sub {
-  font-size: 0.95rem;
-  opacity: 0.95;
-  max-width: 420px;
-  margin: 0.5rem auto 2rem;
+  font-size: 0.9rem;
+  opacity: 0.96;
+  margin-bottom: 1.6rem;
 }
 
 .landing-links {
   display: flex;
   justify-content: center;
+  gap: 0.8rem;
   flex-wrap: wrap;
-  gap: 0.9rem;
 }
 
 /* 버튼 */
@@ -82,6 +214,7 @@
   border-radius: 999px;
   font-size: 0.88rem;
   cursor: pointer;
+  border: none;
 }
 
 .btn-main {
@@ -90,152 +223,51 @@
 }
 
 .btn-sub {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   color: #ffffff;
 }
 
-/* 메인 전용 푸터 */
+/* 메인 전용 푸터 색상 보정 */
 .landing-footer {
-  text-align: center;
-  padding: 1.5rem 1.5rem 2rem;
-  font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.9);
-}
-
-/* =========================================================
-   3개 카테고리 패널 — ILLUST / ANIMATION / BROADCAST
-========================================================= */
-
-.hero-panels {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  /* home-inner보다 아래로 배치 */
-  position: relative;
-  z-index: 1;
-}
-
-.hero-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
-.hero-panel {
-  height: 33vh;
-  display: grid;
-  grid-template-columns: 1fr 1.35fr;
-  overflow: hidden;
-  align-items: center;
-  position: relative;
-}
-
-.hero-panel-inner {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* 텍스트가 정확히 중앙에 있도록 보장 */
-  padding: 0;
-  transition: transform 0.45s ease;
-}
-
-.hero-title {
-  font-size: clamp(2.6rem, 4vw, 3.5rem);
-  letter-spacing: 0.18em;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 4px 12px rgba(0,0,0,.35);
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* 배경 패턴 */
-.hero-illust .hero-panel-inner {
-  background: url("images/pattern01.jpg") center/cover no-repeat;
-}
-.hero-animation .hero-panel-inner {
-  background: url("images/pattern02.jpg") center/cover no-repeat;
-}
-.hero-broadcast .hero-panel-inner {
-  background: url("images/pattern03.jpg") center/cover no-repeat;
-}
-
-/* =========================================================
-   카드 스택 애니메이션
-========================================================= */
-
-.preview-stack {
-  position: relative;
-  left: -140px;
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: all .55s cubic-bezier(0.19,1,0.22,1);
-}
-
-.preview-card {
-  width: 160px;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow:
-    0 10px 20px rgba(0,0,0,.25),
-    0 0 0 3px rgba(255,255,255,.95);
-}
-
-/* 회전 효과 */
-.preview-card:nth-child(1) { transform: rotate(-9deg); }
-.preview-card:nth-child(2) { transform: rotate(-2deg); }
-.preview-card:nth-child(3) { transform: rotate(7deg); }
-
-/* Hover 애니메이션 */
-.hero-panel:hover .hero-panel-inner {
-  transform: translateX(25px);
-}
-
-.hero-panel:hover .preview-stack {
-  opacity: 1;
-  left: 0;
 }
 
 /* =========================================================
    반응형
 ========================================================= */
-@media (max-width: 900px) {
-  .hero-panel {
-    grid-template-columns: 1fr;
-    height: auto;
-    padding: 2rem 0;
+
+@media (max-width: 980px) {
+  .home-top {
+    flex-direction: column;
   }
 
-  .hero-panel-inner {
-    transform: none !important;
-  }
-
-  .preview-stack {
-    position: static;
-    opacity: 1;
-    flex-direction: row;
+  .home-art-column {
+    order: 1;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 1.2rem;
   }
 
-  .preview-card {
-    width: 120px;
+  .art-stack {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+  .hero-bands {
+    order: 2;
+    border-radius: 22px;
+  }
+
+  .home-intro {
+    margin-top: 2.5rem;
   }
 }
 
 @media (max-width: 640px) {
-  .landing-name {
-    font-size: 2.4rem;
+  .home-main {
+    padding-inline: 1.1rem;
   }
-  .landing-profile-wrap {
-    width: 170px;
-    height: 170px;
+
+  .landing-name {
+    font-size: 2.2rem;
   }
 }
