@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hwami | 메인</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- 공통 스타일 -->
+  <link rel="stylesheet" href="common.css" />
+
+  <!-- 홈(메인) 전용 스타일 -->
+  <link rel="stylesheet" href="home.css" />
 </head>
 
 <body class="page-home">
@@ -16,7 +21,7 @@
     <div class="header-inner">
       <div class="logo">
         <a href="index.html">
-          <img src="images/logo.png" alt="Hwami 로고" style="height:100px;" />
+          <img src="images/logo.png" alt="Hwami 로고" />
         </a>
       </div>
       <nav class="gnb">
@@ -31,13 +36,13 @@
   <!-- ================= HWAMI 소개 ================= -->
   <main class="home-inner">
 
-      <div class="landing-name">HWAMI</div>
+      <h1 class="landing-name">HWAMI</h1>
 
       <div class="landing-profile-wrap">
         <img src="images/profile.jpg" alt="화미 프로필" />
       </div>
 
-      <p class="landing-tagline">Illustlation / Design / Shots / Emotions</p>
+      <p class="landing-tagline">Illustration / Design / Shots / Emotions</p>
 
       <p class="landing-sub">
         방송인 푸후를 서포트하며 다양한 귀여운 캐릭터 일러스트를 작업하고 있는
@@ -55,7 +60,7 @@
   <section class="hero-panels">
 
     <!-- ILLUST -->
-    <div class="hero-panel hero-illust">
+    <a href="illustration.html" class="hero-panel hero-illust">
       <div class="preview-stack">
         <img src="images/후루 고양이.jpg" class="preview-card" />
         <img src="images/치사.jpg" class="preview-card" />
@@ -65,10 +70,10 @@
       <div class="hero-panel-inner">
         <h2 class="hero-title">ILLUST</h2>
       </div>
-    </div>
+    </a>
 
     <!-- ANIMATION -->
-    <div class="hero-panel hero-animation">
+    <a href="animation.html" class="hero-panel hero-animation">
       <div class="preview-stack">
         <img src="images/project01.png" class="preview-card" />
         <img src="images/project02.jpeg" class="preview-card" />
@@ -78,10 +83,10 @@
       <div class="hero-panel-inner">
         <h2 class="hero-title">ANIMATION</h2>
       </div>
-    </div>
+    </a>
 
     <!-- BROADCAST -->
-    <div class="hero-panel hero-broadcast">
+    <a href="broadcasting.html" class="hero-panel hero-broadcast">
       <div class="preview-stack">
         <img src="images/project01.png" class="preview-card" />
         <img src="images/project02.jpeg" class="preview-card" />
@@ -91,7 +96,7 @@
       <div class="hero-panel-inner">
         <h2 class="hero-title">BROADCAST</h2>
       </div>
-    </div>
+    </a>
 
   </section>
 
