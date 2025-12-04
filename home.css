@@ -1,0 +1,222 @@
+/* =========================================================
+   HOME PAGE — GLOBAL STYLE
+========================================================= */
+
+.landing-page {
+  min-height: 100vh;
+  background: radial-gradient(
+      circle at top,
+      #ffe0b5,
+      #ffbfbf 55%,
+      #f4c6ff 100%
+    );
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   HWAMI 소개 섹션
+========================================================= */
+
+.landing-inner {
+  text-align: center;
+  color: #ffffff;
+  padding: 4rem 1.5rem 3rem;
+}
+
+.landing-name {
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.landing-profile-wrap {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  border: 6px solid rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+.landing-profile-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.landing-tagline {
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+}
+
+.landing-sub {
+  font-size: 0.95rem;
+  opacity: 0.95;
+  max-width: 420px;
+  margin: 0.5rem auto 2rem;
+}
+
+.landing-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+/* 버튼 */
+.btn-main,
+.btn-sub {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+}
+
+.btn-main {
+  background: #ffffff;
+  color: #e05773;
+}
+
+.btn-sub {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+}
+
+/* =========================================================
+   3개 카테고리 패널 — ILLUST / ANIMATION / BROADCAST
+========================================================= */
+
+.hero-panels {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.hero-panel {
+  height: 33.33vh;
+  display: grid;
+  grid-template-columns: 1fr 1.35fr; /* 왼쪽 카드, 오른쪽 배너 */
+  overflow: hidden;
+  align-items: center;
+  position: relative;
+}
+
+/* 오른쪽 배너 */
+.hero-panel-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 5vw;
+  transition: transform 0.45s ease;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 4vw, 3.5rem);
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4px 12px rgba(0,0,0,.35);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* 오른쪽 배너 배경 */
+.hero-illust .hero-panel-inner {
+  background: url("images/pattern01.jpg") center/cover no-repeat;
+}
+.hero-animation .hero-panel-inner {
+  background: url("images/pattern02.jpg") center/cover no-repeat;
+}
+.hero-broadcast .hero-panel-inner {
+  background: url("images/pattern03.jpg") center/cover no-repeat;
+}
+
+/* =========================================================
+   왼쪽 카드가 바깥에서 들어오는 애니메이션
+========================================================= */
+
+.preview-stack {
+  position: relative;
+  left: -140px;  /* 처음엔 화면 밖 */
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all .55s cubic-bezier(0.19,1,0.22,1);
+}
+
+.preview-card {
+  width: 160px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow:
+    0 10px 20px rgba(0,0,0,.25),
+    0 0 0 3px rgba(255,255,255,.95);
+}
+
+/* 카드 스택 회전 */
+.preview-card:nth-child(1) { transform: rotate(-9deg); }
+.preview-card:nth-child(2) { transform: rotate(-2deg); }
+.preview-card:nth-child(3) { transform: rotate(7deg); }
+
+/* =========================================================
+   Hover 시 효과
+========================================================= */
+
+.hero-panel:hover .hero-panel-inner {
+  transform: translateX(25px);
+}
+
+.hero-panel:hover .preview-stack {
+  opacity: 1;
+  left: 0;
+}
+
+/* =========================================================
+   반응형
+========================================================= */
+@media (max-width: 900px) {
+  .hero-panel {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .hero-panel-inner {
+    padding: 2rem 1rem;
+    transform: none !important;
+  }
+
+  .preview-stack {
+    position: static;
+    opacity: 1;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.2rem;
+  }
+
+  .preview-card {
+    width: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .landing-name {
+    font-size: 2.4rem;
+  }
+
+  .landing-profile-wrap {
+    width: 170px;
+    height: 170px;
+  }
+}
